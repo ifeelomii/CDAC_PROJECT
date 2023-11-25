@@ -1,8 +1,11 @@
 dbName:= politician
 
 Table name:= tbl_complaint
-Columns:= c_date, forAdmin, forGS, C_ID, u_name, c_location, c_description, u_address, u_phone, c_type, c_region, u_email
+Columns:= c_date, forAdmin, forGS, c_id, c_location, c_description, c_type, c_region
 {email, complaint_type, complaint_description, location,region, name, address, phone, status}
+
+Table Name:= tbl_user
+Columns:= u_name, u_address, u_phone, u_email
 
 Table name:= tbl_gramsevak
 Columns:= name, email, phone, address, region, password, status, GS_ID,
