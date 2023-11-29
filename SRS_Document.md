@@ -63,7 +63,7 @@ The Portal should have a user-friendly interface and intuitive navigation to ena
 
 The Portal should be easy to maintain and update, with clear documentation and support resources available to Grampanchayat authority, higher authiorities. This will ensure that the portal remains functional and effective over time, without requiring excessive resources or expertise.
 
-###Accessibility:
+### Accessibility:
 
 The Portal should be accessible to people, through appropriate design features and assistive technologies. This will ensure that everyone in the community can use the portal to submit complaints and access services provided by the Grampanchayat.
 
