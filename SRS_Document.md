@@ -10,14 +10,13 @@ System Requirement Speciation for Online E-Complaints Management Portal
 Direct User, Indirect User, Admin, Maintainance Team.
 
 ## Objective (Purpose):
-The Purpose of this Project is to Understand the problem of common peoples of rural area and Try to Resolve it by passing it to athority or upper athority.
+The Purpose of this Project is to Understand the problem of common peoples of rural area and Try to Resolve it by passing it to authority or upper authority.
 The purpose of this Project is to define the requirements and specifications for the development of a comprehensive portal. 
 This portal aims to bridge the communication gap between village residents, Gramsevaks, and higher authorities by providing a unified platform for submitting and addressing grievances. 
 By leveraging technology, the project endeavors to enhance transparency, efficiency, and community engagement within rural areas.
-People wont have to visit office for registering their complains to the office .
-the portal will take care to send their complaints to the authorities.
+People wont have to visit office for registering their complains to the office, the portal will take care to send their complaints to the authorities.
 Complaints Registered by the registered users on the portal will be able to monitor his complaint.
-Admin checks whether Complaints are resolved or not by athority(GramSevak).
+Admin will check whether Complaints are resolved or not by the authorities(GramSevak).
 
 ## Scope:
 The scope of project is to reduce work of people to visit the office and save their time.
