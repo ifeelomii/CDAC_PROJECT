@@ -41,14 +41,14 @@ The higher authiorities have list of authorities such as gramsevaks and he can a
 
 ### Security: 
 
-The Portals higher authorities  will have their own login no one except higher authiorities, and athorities of that region,so that no one can tamper with the complains and this will provide security. 
+The Portals higher authorities  will have their own login no one except higher authiorities, and athorities of that region,so that no one can tamper with the complains and this will provide security.
 
 
 ### Reliability: 
 
 The Portal should be reliable and available 24/7 to ensure that complaints can be submitted and processed at any time. 
 
-This will enable timely resolution of complaints.
+This will enable timely resolution of complaints and 100% transparency.
 
 ### Scalability:
 
