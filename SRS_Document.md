@@ -4,7 +4,7 @@
 System Requirement Specification Document
 
 ## Title:
-System Requirement Speciation for Online Grievance Redressal Portal
+System Requirement Specifications for Online Grievance Redressal Portal
 
 ## Team: 
 Direct User, Indirect User, Admin, Maintainance Team.
