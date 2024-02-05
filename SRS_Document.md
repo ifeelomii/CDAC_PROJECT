@@ -32,7 +32,7 @@ The user will only have to log in to the protal and then he can write his compla
 The user can track the status of the complaint and if the complains is resolved he can check it if it is truly resolved or not.
 The authorities(GramSevak) can handle complaints registered by users he tries to resolve the complains on his level and if the complains cannot be resolved then the complains are transfered  to the higher authorities.
 Authorities have count of complains which are completed ,in process ,new complains.
-The Authorities (Gramsevak) will have his login to the the dashbord where he can review all the complains thar are to be resolved .
+The Authorities (Gramsevak) will have his login to the the dashbord where he can review all the complains that are to be resolved .
 The authorities can login through their region id can handle complains registered through that region users.
 The higher authiorities have list of authorities such as gramsevaks and he can authorise them.he can register new authorities. 
 
