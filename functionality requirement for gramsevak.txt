@@ -1,0 +1,10 @@
+1.sign in using login id and password sign in.
+2. all the complains based on their area of job;
+3.he should be able to add comments on the complains (on each complain).
+	--admin should be able to read comments.
+4.if the gramsevak can't solve the issue he should be able to forward the issue to admin.
+5.he should be able to change the status of complain to resolved or pending or inProgress.
+6.
+7.
+8.
+
