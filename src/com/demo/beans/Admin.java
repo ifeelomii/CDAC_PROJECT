@@ -1,33 +1,31 @@
-package com.demo.beans;
+package com.demo.model;
 
 public class Admin extends Person{
-	private String admin_id;
+	private String adminId;
 	private String username;
 	private String password;
-	private String user_id;
-	private String complaint_id;
+	private String userId;
+	private String complaintId;
 	
 	public Admin() {
 		super();
 	}
-	
-	public Admin(String first_name, String last_name, String email_id, String phone_number,String admin_id, String username, String password, String user_id, String complaint_id) {
-		super(first_name,last_name,email_id,phone_number);
-		this.admin_id = admin_id;
+
+	public Admin(String adminId, String username, String password, String userId, String complaintId) {
+		super();
+		this.adminId = adminId;
 		this.username = username;
 		this.password = password;
-		this.user_id = user_id;
-		this.complaint_id = complaint_id;
-	}
-	
-	
-	
-	public String getAdmin_id() {
-		return admin_id;
+		this.userId = userId;
+		this.complaintId = complaintId;
 	}
 
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public String getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
 	}
 
 	public String getUsername() {
@@ -46,25 +44,26 @@ public class Admin extends Person{
 		this.password = password;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getComplaint_id() {
-		return complaint_id;
+	public String getComplaintId() {
+		return complaintId;
 	}
 
-	public void setComplaint_id(String complaint_id) {
-		this.complaint_id = complaint_id;
+	public void setComplaintId(String complaintId) {
+		this.complaintId = complaintId;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString()+"Admin [ admin_id=" + admin_id + ", username=" + username + ", password=" + password
-				+ ", user_id=" + user_id + ", complaint_id=" + complaint_id + "]";
+		return "Admin [adminId=" + adminId + ", username=" + username + ", password=" + password + ", userId=" + userId
+				+ ", complaintId=" + complaintId + "]";
 	}
+		
 }

@@ -1,48 +1,49 @@
-package com.demo.beans;
+package com.demo.model;
 
 public class Person {
-	private String first_name;
-	private String last_name;
-	private String email_id;
-	private String phone_number;
+	private String firstName;
+	private String lastName;
+	private String emailId;
+	private String phoneNumber;
+	
 	public Person() {
 		super();
 	}
-	public Person(String first_name, String last_name, String email_id, String phone_number) {
+	public Person(String firstName, String lastName, String emailId, String phoneNumber) {
 		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.email_id = email_id;
-		this.phone_number = phone_number;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailId = emailId;
+		this.phoneNumber = phoneNumber;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public String getEmail_id() {
-		return email_id;
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	@Override
 	public String toString() {
-		return "Person [first_name=" + first_name + ", last_name=" + last_name + ", email_id=" + email_id
-				+ ", phone_number=" + phone_number + "]";
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId + ", phoneNumber="
+				+ phoneNumber + "]";
 	}
-	
+		
 }

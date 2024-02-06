@@ -1,9 +1,9 @@
-package com.demo.beans;
+package com.demo.model;
 
 import java.util.Date;
 
 public class User extends Person{
-	private String user_id;
+	private String userId;
 	private String username;
 	private String password;
 	private Date dob;
@@ -15,18 +15,18 @@ public class User extends Person{
 	private String region;
 	private String address;
 	private String panchayat;
-	private String post_office;
-	private int pin_code;
+	private String postoffice;
+	private int pincode;
 	
 	public User() {
 		super();
 	}
 
-	public User(String first_name, String last_name, String email_id, String phone_number,String user_id, String username, String password, Date dob, String state, String city,
-			String district, String taluka, String village, String region, String address, String panchayat,
-			String post_office, int pin_code) {
-		super(first_name,last_name,email_id,phone_number);
-		this.user_id = user_id;
+	public User(String userId, String username, String password, Date dob, String state, String city, String district,
+			String taluka, String village, String region, String address, String panchayat, String postoffice,
+			int pincode) {
+		super();
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.dob = dob;
@@ -38,16 +38,16 @@ public class User extends Person{
 		this.region = region;
 		this.address = address;
 		this.panchayat = panchayat;
-		this.post_office = post_office;
-		this.pin_code = pin_code;
+		this.postoffice = postoffice;
+		this.pincode = pincode;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
@@ -138,30 +138,28 @@ public class User extends Person{
 		this.panchayat = panchayat;
 	}
 
-	public String getPost_office() {
-		return post_office;
+	public String getPostoffice() {
+		return postoffice;
 	}
 
-	public void setPost_office(String post_office) {
-		this.post_office = post_office;
+	public void setPostoffice(String postoffice) {
+		this.postoffice = postoffice;
 	}
 
-	public int getPin_code() {
-		return pin_code;
+	public int getPincode() {
+		return pincode;
 	}
 
-	public void setPin_code(int pin_code) {
-		this.pin_code = pin_code;
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString()+"Users [user_id=" + user_id + ", username=" + username + ", password=" + password
-				+ ", dob=" + dob + ", state=" + state + ", city=" + city + ", district=" + district + ", taluka="
-				+ taluka + ", village=" + village + ", region=" + region + ", address=" + address + ", panchayat="
-				+ panchayat + ", post_office=" + post_office + ", pin_code=" + pin_code + "]";
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", dob=" + dob
+				+ ", state=" + state + ", city=" + city + ", district=" + district + ", taluka=" + taluka + ", village="
+				+ village + ", region=" + region + ", address=" + address + ", panchayat=" + panchayat + ", postoffice="
+				+ postoffice + ", pincode=" + pincode + "]";
 	}
-	
-	
 	
 }
