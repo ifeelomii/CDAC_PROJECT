@@ -46,31 +46,8 @@ VALUES
 
 -- End of fake user data script
 
--- Connection B/W Users Table and Complaints Table
-CREATE TABLE IF NOT EXISTS user_complaint (
-	user_id VARCHAR(30),
-    complaint_id VARCHAR(30),
-    FOREIGN KEY (user_id) REFERENCES tbl_users(user_id),
-	FOREIGN KEY (complaint_id) REFERENCES tbl_complaints(complaint_id)
-);
-
-INSERT INTO user_complaints 
-	(user_id,complaint_id)
-VALUES
-	('user010','COMP001'),
-    ('user101','COMP002'),
-    ('user102','COMP003'),
-    ('user103','COMP004'),
-    ('user104','COMP005'),
-    ('user105','COMP006'),
-    ('user106','COMP007'),
-    ('user107','COMP008'),
-    ('user108','COMP009'),
-    ('user109','COMP010');
-    
--- End of fake user data script
-
--- Complaints Table        
+-- Complaints Table  
+DROP TABLE tbl_complaints;
 CREATE TABLE IF NOT EXISTS tbl_complaints (
     complaint_id VARCHAR(30) PRIMARY KEY,
     user_id VARCHAR(20),
@@ -92,10 +69,36 @@ VALUES
     ('COMP005', 'USER_005', 'Region B', 'Infrastructure', 'Electricity outage issues.', 1, 0, 'new'),
     ('COMP006', 'USER_006', 'Region C', 'Sanitation', 'Open defecation problem.', 0, 1, 'inprocess'),
     ('COMP007', 'USER_007', 'Region A', 'Healthcare', 'No ambulance service available.', 1, 0, 'completed'),
-    ('COMP08', 'USER_008', 'Region B', 'Education', 'School buildings in dilapidated condition.', 0, 1, 'new'),
+    ('COMP008', 'USER_008', 'Region B', 'Education', 'School buildings in dilapidated condition.', 0, 1, 'new'),
     ('COMP009', 'USER_009', 'Region C', 'Infrastructure', 'Water supply irregularities.', 1, 0, 'completed'),
     ('COMP010', 'USER_010', 'Region A', 'Sanitation', 'Pollution from factories affecting health.', 0, 1, 'completed');
 
+-- End of fake user data script
+
+
+-- Connection B/W Users Table and Complaints Table
+DROP TABLE user_complaint;
+CREATE TABLE IF NOT EXISTS user_complaint (
+	user_id VARCHAR(30),
+    complaint_id VARCHAR(30),
+    FOREIGN KEY (user_id) REFERENCES tbl_users(user_id),
+	FOREIGN KEY (complaint_id) REFERENCES tbl_complaints(complaint_id)
+);
+
+INSERT INTO user_complaint
+	(user_id,complaint_id)
+VALUES
+	('user010','COMP001'),
+    ('user101','COMP002'),
+    ('user102','COMP003'),
+    ('user103','COMP004'),
+    ('user104','COMP005'),
+    ('user105','COMP006'),
+    ('user106','COMP007'),
+    ('user107','COMP008'),
+    ('user108','COMP009'),
+    ('user109','COMP010');
+    
 -- End of fake user data script
 
 CREATE TABLE IF NOT EXISTS tbl_comments (
@@ -130,30 +133,27 @@ CREATE TABLE IF NOT EXISTS tbl_gramsevak (
     district VARCHAR(20),
     taluka VARCHAR(20),
     village VARCHAR(20),
-    status INT,
-    complaint_id VARCHAR(30),
-    FOREIGN KEY (complaint_id) REFERENCES tbl_complaints(complaint_id)
+    status INT
 );
 INSERT INTO tbl_gramsevak 
-    (gs_id, first_name, last_name, username, password, email_id, phone_number, state, district, taluka, village, status, complaint_id, comment_id)
+    (gs_id, first_name, last_name, username, password, email_id, phone_number, state, district, taluka, village, status)
 VALUES
-	('gs002','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','9561466648','Maharashtra','Beed','Beed','Beed',1,'complaint001',1),
-    ('gs002', 'Jane', 'Doe', 'janedoe', 'password@456', 'jane.doe@email.com', '9876543210', 'State2', 'District2', 'Taluka2', 'Village2', 0, 'complaint002', 2),
-    ('gs003', 'Bob', 'Smith', 'bobsmith', 'pass789', 'bob.smith@email.com', '5551112233', 'State3', 'District3', 'Taluka3', 'Village3', 1, 'complaint003', 3),
-    ('gs004', 'Alice', 'Johnson', 'alicejohnson', 'pass987', 'alice.johnson@email.com', '9871234567', 'State4', 'District4', 'Taluka4', 'Village4', 0, 'complaint004', 4),
-	('gs005', 'David', 'Miller', 'davidmiller', 'millerpass', 'david.miller@email.com', '1112223333', 'State5', 'District5', 'Taluka5', 'Village5', 1, 'complaint005', 5),
-    ('gs006', 'Sara', 'Lee', 'saralee', 'leesara', 'sara.lee@email.com', '4445556666', 'State6', 'District6', 'Taluka6', 'Village6', 0, 'complaint006', 6),
-    ('gs007', 'Chris', 'Harris', 'chrisharris', 'chrishpass', 'chris.harris@email.com', '7778889999', 'State7', 'District7', 'Taluka7', 'Village7', 1, 'complaint007', 7),
-    ('gs008', 'Eva', 'Smith', 'evasmith', 'evapass', 'eva.smith@email.com', '3334445555', 'State8', 'District8', 'Taluka8', 'Village8', 0, 'complaint008', 8),
-    ('gs008', 'Eva', 'Smith', 'evasmith', 'evapass', 'eva.smith@email.com', '3334445555', 'State8', 'District8', 'Taluka8', 'Village8', 0, 'complaint008', 8),
-    ('gs009', 'Michael', 'Jones', 'michaeljones', 'jonespass', 'michael.jones@email.com', '9998887777', 'State9', 'District9', 'Taluka9', 'Village9', 1, 'complaint009', 9),
-    ('gs010', 'Sophia', 'Williams', 'sophiawilliams', 'sophiapass', 'sophia.williams@email.com', '6667778888', 'State10', 'District10', 'Taluka10', 'Village10', 0, 'complaint010', 10),
-    ('gs011', 'Daniel', 'Taylor', 'danieltaylor', 'taylorpass', 'daniel.taylor@email.com', '1112223333', 'State11', 'District11', 'Taluka11', 'Village11', 1, 'complaint011', 11),
-    ('gs012', 'Olivia', 'Brown', 'oliviabrown', 'brownpass', 'olivia.brown@email.com', '5554443333', 'State12', 'District12', 'Taluka12', 'Village12', 0, 'complaint012', 12),
-    ('gs013', 'William', 'Martin', 'williammartin', 'martinpass', 'william.martin@email.com', '9995554444', 'State13', 'District13', 'Taluka13', 'Village13', 1, 'complaint013', 13),
-    ('gs014', 'Emma', 'Anderson', 'emmaanderson', 'andersonpass', 'emma.anderson@email.com', '7778889999', 'State14', 'District14', 'Taluka14', 'Village14', 0, 'complaint014', 14),
-    ('gs015', 'Matthew', 'Clark', 'matthewclark', 'clarkpass', 'matthew.clark@email.com', '2223334444', 'State15', 'District15', 'Taluka15', 'Village15', 1, 'complaint015', 15),
-    ('gs016', 'John', 'Doe', 'johndoe', 'password@123', 'john.doe@email.com', '1234567890', 'State16', 'District16', 'Taluka16', 'Village16', 16, 'complaint0016', 16);
+	('gs001','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','9561466648','Maharashtra','Beed','Beed','Beed',1),
+    ('gs002', 'Jane', 'Doe', 'janedoe', 'password@456', 'jane.doe@email.com', '9876543210', 'State2', 'District2', 'Taluka2', 'Village2', 0),
+    ('gs003', 'Bob', 'Smith', 'bobsmith', 'pass789', 'bob.smith@email.com', '5551112233', 'State3', 'District3', 'Taluka3', 'Village3', 1),
+    ('gs004', 'Alice', 'Johnson', 'alicejohnson', 'pass987', 'alice.johnson@email.com', '9871234567', 'State4', 'District4', 'Taluka4', 'Village4', 0),
+	('gs005', 'David', 'Miller', 'davidmiller', 'millerpass', 'david.miller@email.com', '1112223333', 'State5', 'District5', 'Taluka5', 'Village5', 1),
+    ('gs006', 'Sara', 'Lee', 'saralee', 'leesara', 'sara.lee@email.com', '4445556666', 'State6', 'District6', 'Taluka6', 'Village6', 0),
+    ('gs007', 'Chris', 'Harris', 'chrisharris', 'chrishpass', 'chris.harris@email.com', '7778889999', 'State7', 'District7', 'Taluka7', 'Village7', 1),
+    ('gs008', 'Eva', 'Smith', 'evasmith', 'evapass', 'eva.smith@email.com', '3334445555', 'State8', 'District8', 'Taluka8', 'Village8', 0),
+    ('gs009', 'Michael', 'Jones', 'michaeljones', 'jonespass', 'michael.jones@email.com', '9998887777', 'State9', 'District9', 'Taluka9', 'Village9', 1),
+    ('gs010', 'Sophia', 'Williams', 'sophiawilliams', 'sophiapass', 'sophia.williams@email.com', '6667778887', 'State10', 'District10', 'Taluka10', 'Village10', 0),
+    ('gs011', 'Daniel', 'Taylor', 'danieltaylor', 'taylorpass', 'daniel.taylor@email.com', '1112223334', 'State11', 'District11', 'Taluka11', 'Village11', 1),
+    ('gs012', 'Olivia', 'Brown', 'oliviabrown', 'brownpass', 'olivia.brown@email.com', '5554443332', 'State12', 'District12', 'Taluka12', 'Village12', 0),
+    ('gs013', 'William', 'Martin', 'williammartin', 'martinpass', 'william.martin@email.com', '9995554444', 'State13', 'District13', 'Taluka13', 'Village13', 1),
+    ('gs014', 'Emma', 'Anderson', 'emmaanderson', 'andersonpass', 'emma.anderson@email.com', '7778889991', 'State14', 'District14', 'Taluka14', 'Village14', 0),
+    ('gs015', 'Matthew', 'Clark', 'matthewclark', 'clarkpass', 'matthew.clark@email.com', '2223334441', 'State15', 'District15', 'Taluka15', 'Village15', 1),
+    ('gs016', 'John', 'Doe', 'johndoe', 'password@123', 'john.doe@email.com', '1234567890', 'State16', 'District16', 'Taluka16', 'Village16', 16);
 
 -- End of fake user data script
     
@@ -172,8 +172,16 @@ INSERT INTO tbl_admin
 VALUES 
 	('admin001', 'Omkar', 'Ware', 'Omkarware003', 'Omkarware@003', 'omkarware003@google.com', '9561466648'),
 	('admin002','Dnyanendra','Borase','DJB26','Dj@8928','dj@gmail.com','8530803616'),
-	('admin003','Vishal','Ranjile','Vishal@003','Vishal@003','vishalranjile@','9890311016');
+	('admin003','Vishal','Ranjile','Vishal@003','Vishal@003','vishalranjile@gmail.com','9890311016'),
+    ('admin004','Ashish','Sharma','Ashish@004','Ashish@004','ashishsharma@gmail.com','8319262932'),
+    ('admin005','Priyanka','Sarode','Priyanka@005','Priyanka@005','priyankasarode@gmail.com','9876543210');
 
 
 
 SHOW TABLES;
+TABLE tbl_admin;
+TABLE tbl_comments;
+TABLE tbl_complaints;
+TABLE tbl_gramsevak;
+TABLE tbl_users;
+TABLE user_complaint;
