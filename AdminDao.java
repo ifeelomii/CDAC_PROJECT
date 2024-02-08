@@ -42,7 +42,9 @@ public class AdminDao implements IAdminDao {
 
 	@Override
 	public void addNewAdminDao(Admin admin) {
-		jdbcTemplate.update("UPDATE tbl_admin SET user_id=?,first_name=?,last_name=?,username=?,password=?,email_id=?,phone_number=?",new Object[] {admin.getUserId(),admin.getFirstName(),admin.getLastName(),admin.getUsername(),admin.getPassword(),admin.getEmailId()});		
+		String str="insert into tbl_admin values(?,?,?,?,?,?,?)";
+		jdbcTemplate.update(str,new Object[] {admin.getUserId(),
+				admin.getFirstName(),admin.getLastName(),admin.getUsername(),admin.getPassword(),admin.getEmailId(),admin.getPhoneNumber()});		
 	}
 
 	@Override
