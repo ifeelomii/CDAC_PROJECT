@@ -80,10 +80,11 @@ CREATE TABLE IF NOT EXISTS tbl_complaints (
     district VARCHAR(20),
     taluka VARCHAR(20),
     village VARCHAR(20),
+    remarks VARCHAR(100),
     FOREIGN KEY (user_id) REFERENCES tbl_users(user_id)
 );
 INSERT INTO tbl_complaints 
-	(complaint_id, user_id, category, complaint_description, forGS, forAdmin, status, state, district, taluka, village)
+	(complaint_id, user_id, category, complaint_description, forGS, forAdmin, status, state, district, taluka, village, remarks)
 VALUES
     ('50001', '10110','Infrastructure', 'Roads are in poor condition.', 1, 0, 'completed', 'Maharashtra', 'District1','Taluka1','Village1'),
     ('50002', '10111','Sanitation', 'Garbage not collected regularly.', 0, 1, 'new', 'Maharashtra','District1','Taluka2','Village6'),
@@ -111,7 +112,7 @@ CREATE TABLE IF NOT EXISTS user_complaint (
 INSERT INTO user_complaint
 	(user_id,complaint_id)
 VALUES
-	('10010','50001'),
+    ('10010','50001'),
     ('10101','50002'),
     ('10102','50003'),
     ('10103','50004'),
@@ -124,6 +125,7 @@ VALUES
     
 -- End of fake user data script
 
+/*
 CREATE TABLE IF NOT EXISTS tbl_comments (
     comment_id INT PRIMARY KEY AUTO_INCREMENT,
     complaint_id INT,
@@ -140,7 +142,7 @@ VALUES
 	('80003','50003','N/A03'),
     ('80004','50004','N/A04'),
     ('80005','50005','N/A05');
-
+*/
 -- End of fake user data script
     
 -- Gram Sevak Table
@@ -161,11 +163,11 @@ CREATE TABLE IF NOT EXISTS tbl_gramsevak (
 INSERT INTO tbl_gramsevak 
     (gs_id, first_name, last_name, username, password, email_id, phone_number, state, district, taluka, village, gsstatus)
 VALUES
-	('20001','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','9561466648','Maharashtra','District1','Taluka1','Village1',1),
+    ('20001','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','9561466648','Maharashtra','District1','Taluka1','Village1',1),
     ('20002', 'Jane', 'Doe', 'janedoe', 'password@456', 'jane.doe@email.com', '9876543210', 'Maharashtra', 'District1', 'Taluka1', 'Village2', 0),
     ('20003', 'Bob', 'Smith', 'bobsmith', 'pass789', 'bob.smith@email.com', '5551112233', 'Maharashtra', 'District1', 'Taluka1', 'Village3', 1),
     ('20004', 'Alice', 'Johnson', 'alicejohnson', 'pass987', 'alice.johnson@email.com', '9871234567', 'Maharashtra', 'District1', 'Taluka2', 'Village4', 0),
-	('20005', 'David', 'Miller', 'davidmiller', 'millerpass', 'david.miller@email.com', '1112223333', 'Maharashtra', 'District1', 'Taluka2', 'Village5', 1),
+    ('20005', 'David', 'Miller', 'davidmiller', 'millerpass', 'david.miller@email.com', '1112223333', 'Maharashtra', 'District1', 'Taluka2', 'Village5', 1),
     ('20006', 'Sara', 'Lee', 'saralee', 'leesara', 'sara.lee@email.com', '4445556666', 'Maharashtra', 'District1', 'Taluka2', 'Village6', 0),
     ('20007', 'Chris', 'Harris', 'chrisharris', 'chrishpass', 'chris.harris@email.com', '7778889999', 'Maharashtra', 'District2', 'Taluka3', 'Village7', 1),
     ('20008', 'Eva', 'Smith', 'evasmith', 'evapass', 'eva.smith@email.com', '3334445555', 'Maharashtra', 'District2', 'Taluka3', 'Village8', 0),
@@ -198,8 +200,8 @@ VALUES
 	('30001', 'Omkar', 'Ware', 'Omkarware003', 'Omkarware@003', 'omkarware003@google.com', '9561466648'),
 	('30002','Dnyanendra','Borase','DJB26','Dj@8928','dj@gmail.com','8530803616'),
 	('30003','Vishal','Ranjile','Vishal@003','Vishal@003','vishalranjile@gmail.com','9890311016'),
-    ('30004','Ashish','Sharma','Ashish@004','Ashish@004','ashishsharma@gmail.com','8319262932'),
-    ('30005','Priyanka','Sarode','Priyanka@005','Priyanka@005','priyankasarode@gmail.com','9876543210');
+    	('30004','Ashish','Sharma','Ashish@004','Ashish@004','ashishsharma@gmail.com','8319262932'),
+    	('30005','Priyanka','Sarode','Priyanka@005','Priyanka@005','priyankasarode@gmail.com','9876543210');
 
 
 
