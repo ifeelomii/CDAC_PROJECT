@@ -102,7 +102,7 @@ VALUES
 
 -- Connection B/W Users Table and Complaints Table
 -- DROP TABLE user_complaint;
-CREATE TABLE IF NOT EXISTS user_complaint (
+/*CREATE TABLE IF NOT EXISTS user_complaint (
 	user_id INT,
     complaint_id INT,
     FOREIGN KEY (user_id) REFERENCES tbl_users(user_id),
@@ -122,6 +122,7 @@ VALUES
     ('10107','50008'),
     ('10108','50009'),
     ('10109','50010');
+*/
     
 -- End of fake user data script
 
