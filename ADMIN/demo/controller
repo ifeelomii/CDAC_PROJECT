@@ -1,0 +1,45 @@
+package com.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+public class AdminController {
+	@Autowired
+    private IAdminService adminservice;
+
+    @GetMapping
+    public List <Admin> getAllAdmins() {
+        return adminservice.getAllAdminsServices();
+    }
+
+    @GetMapping("/{id}")
+    public Admin getById(@PathVariable int id) {
+        return adminservice.getByIdServices(id);
+    }
+
+    @PostMapping
+    public String addNewAdmin(@RequestBody Admin admin) {
+        return adminservice.addNewAdminServices(admin) ? "ADMIN ADDED SUCCESSFULLY" : "ADMIN ADDITION FAILED";
+    }
+
+    @PutMapping
+    public String updateAdmin@RequestBody Admin admin) {
+        return adminservice.updateAdminServices(admin) ? "ADMIN UPDATED SUCCESSFULLY" : "ADMIN UPDATE FAILED";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteAdmin(@PathVariable int id) {
+        return adminservice.deleteAdminByIdServices(id) ? "ADMIN DELETED SUCCESSFULLY" : "ADMIN DELETION FAILED";
+    }
+
+    @PatchMapping("/updatePassword")
+    public String updatePassword(@RequestParam int adminId, @RequestParam String newPassword) {
+        return adminservice.updatePassword(adminId, newPassword) ? "PASSWORD UPDATED SUCCESSFULLY" : "PASSWORD UPDATE FAILED";
+}
