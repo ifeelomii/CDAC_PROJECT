@@ -187,7 +187,7 @@ VALUES
     
 -- Admin Table
 CREATE TABLE IF NOT EXISTS tbl_admin(
-	admin_id VARCHAR(30) PRIMARY KEY AUTO_INCREMENT,
+	admin_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     username VARCHAR(30) UNIQUE,
