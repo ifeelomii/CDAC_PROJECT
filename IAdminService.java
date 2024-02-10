@@ -17,4 +17,6 @@ public interface IAdminService {
 	void updateAdminServices(Admin admin);
 
 	void deleteAdminByIdServices(int id);
+	
+	boolean updatePassword(int adminId, String newPassword);
 }
