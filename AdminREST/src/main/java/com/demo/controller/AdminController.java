@@ -27,7 +27,7 @@ public class AdminController {
 	private AdminService aservice;
 	
 	@GetMapping("/admins")
-	public ResponseEntity<List<Admin>> getallproducts(){
+	public ResponseEntity<List<Admin>> getallAdmins(){
 		List<Admin> adminlist=aservice.getAdmins();
 		return ResponseEntity.ok(adminlist);
 		
