@@ -43,13 +43,13 @@ public class AdminController {
 	}
 	
 	@PostMapping("admins/{adminId}")
-	public ResponseEntity<String> insertProduct(@RequestBody Admin admin){
+	public ResponseEntity<String> insertAdmin(@RequestBody Admin admin){
 		aservice.addnewAdmin(admin);
 		return ResponseEntity.ok("data added successfully");
 		
 	}
 	@PutMapping("admins/{adminId}")
-	public ResponseEntity<String> updateProduct(@RequestBody Admin admin){
+	public ResponseEntity<String> updateAdmin(@RequestBody Admin admin){
 		aservice.updateById(admin);
 		return ResponseEntity.ok("data updated successfully");
 		
