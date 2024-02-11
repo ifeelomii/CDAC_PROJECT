@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS tbl_users (
     district VARCHAR(20),
     taluka VARCHAR(20),
     village VARCHAR(20),
-    region VARCHAR(20),
     address VARCHAR(100),
     panchayat VARCHAR(50),
     post_office VARCHAR(50),
