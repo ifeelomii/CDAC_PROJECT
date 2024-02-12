@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS tbl_users (
 INSERT INTO tbl_users 
 	(user_id, first_name, last_name, username, password, email_id, dob, phone_number, state, district, taluka, village, address, panchayat, post_office, pin_code)
 VALUES
-	('10110','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','2001-10-06','9561466648','Maharashtra','District1','Taluka1','Village1','Beed','Ganesh Nagar near Old SP Office','Beed','Beed',431122),
+	--('10110','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','2001-10-06','9561466648','Maharashtra','District1','Taluka1','Village1','Beed','Ganesh Nagar near Old SP Office','Beed','Beed',431122),
 	('10101', 'John', 'Doe', 'johndoe', 'password@1', 'john.doe@email.com', '1990-01-01', '1234567890', 'Maharashtra', 'District1', 'Taluka1', 'Village1', 'Address1', 'Panchayat1', 'PostOffice1', 123456),
 	('10102', 'Jane', 'Smith', 'janesmith', 'password@2', 'jane.smith@email.com', '1992-05-15', '9876543210', 'Maharashtra', 'District1', 'Taluka1', 'Village2',  'Address2', 'Panchayat2', 'PostOffice2', 654321),
 	('10103', 'Robert', 'Johnson', 'robertjohnson', 'password@100', 'robert.johnson@email.com', '1985-11-20', '8765432109', 'Maharashtra', 'District1', 'Taluka1', 'Village2',  'Address10', 'Panchayat10', 'PostOffice10', 987654),
