@@ -79,11 +79,11 @@ CREATE TABLE IF NOT EXISTS tbl_complaints (
     district VARCHAR(20),
     taluka VARCHAR(20),
     village VARCHAR(20),
-    remarks VARCHAR(100),
+    remarks VARCHAR(100) DEFAULT null,
     FOREIGN KEY (user_id) REFERENCES tbl_users(user_id)
 );
 INSERT INTO tbl_complaints 
-	(complaint_id, user_id, category, complaint_description, forGS, forAdmin, status, state, district, taluka, village, remarks)
+	(complaint_id, user_id, category, complaint_description, forGS, forAdmin, status, state, district, taluka, village)
 VALUES
     ('50001', '10110','Infrastructure', 'Roads are in poor condition.', 1, 0, 'completed', 'Maharashtra', 'District1','Taluka1','Village1'),
     ('50002', '10111','Sanitation', 'Garbage not collected regularly.', 0, 1, 'new', 'Maharashtra','District1','Taluka2','Village6'),
