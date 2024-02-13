@@ -101,7 +101,8 @@ VALUES
 
 -- Connection B/W Users Table and Complaints Table
 -- DROP TABLE user_complaint;
-/*CREATE TABLE IF NOT EXISTS user_complaint (
+/*
+CREATE TABLE IF NOT EXISTS user_complaint (
 	user_id INT,
     complaint_id INT,
     FOREIGN KEY (user_id) REFERENCES tbl_users(user_id),
