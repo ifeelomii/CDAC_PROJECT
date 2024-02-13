@@ -122,11 +122,8 @@ VALUES
     ('10107','50008'),
     ('10108','50009'),
     ('10109','50010');
-*/
-    
+ 
 -- End of fake user data script
-
-/*
 CREATE TABLE IF NOT EXISTS tbl_comments (
     comment_id INT PRIMARY KEY AUTO_INCREMENT,
     complaint_id INT,
