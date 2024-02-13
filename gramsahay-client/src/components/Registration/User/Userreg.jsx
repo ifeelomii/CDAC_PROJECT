@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Userreg.css";
+import UserService from "../../../services/UserService";
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,8 @@ const UserRegistrationForm = () => {
     e.preventDefault();
     try {
       // Call API to register user
-      // await axios.post("YOUR_REGISTRATION_API_ENDPOINT", formData);
+      // await axios.post(UserService.addUser(formData));
+      UserService.addUser(formData);
       setSuccess(true);
       setError("");
     } catch (error) {
@@ -47,6 +49,15 @@ const UserRegistrationForm = () => {
   return (
     <div id="main-user-reg-div">
       <h2 id="user-reg">User Registration</h2>
+      <div id="complaint-reg">
+        {/* Display error if any */}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
+        {/* Show success message on successful registration */}
+        {success && (
+          <p style={{ color: "green" }}>User registered successfully!</p>
+        )}
+      </div>
       <form onSubmit={handleSubmit} id="user-reg-form">
         {/* UserID is Auto Generated */}
 
@@ -224,8 +235,8 @@ const UserRegistrationForm = () => {
             Postoffice:
             <input
               type="text"
-              name="post_office"
-              value={formData.post_office}
+              name="postoffice"
+              value={formData.postoffice}
               onChange={handleChange}
               placeholder="Enter Postoffice"
               className="col-md-12"
@@ -248,14 +259,6 @@ const UserRegistrationForm = () => {
           </label>
         </div>
         <div id="last-line"></div>
-
-        {/* Display error if any */}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        {/* Show success message on successful registration */}
-        {success && (
-          <p style={{ color: "green" }}>User registered successfully!</p>
-        )}
 
         <div id="btn-group">
           <button type="submit" id="submit">

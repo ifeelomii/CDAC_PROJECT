@@ -37,6 +37,10 @@
   justify-content: space-evenly;
 }
 
+#reset:hover{
+  background-color: azure;
+} 
+
 #btn-group > button {
   width: 200px;
   border-radius: 8px;

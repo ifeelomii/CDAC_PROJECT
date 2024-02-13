@@ -1,44 +1,49 @@
 import React, { useState } from "react";
 import "./UserLogin.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import { MainFooter } from "../../Footer/MainFooter";
 
 const UserLogin = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [registerUsername, setRegisterUsername] = useState("");
+  // const [registerPassword, setRegisterPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // const [error, setError] = useState("");
 
+  const navigate = useNavigate();
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+
+    if (loginUsername === "omkar" && loginPassword === "omkar") {
+      navigate("/user/allusers");
+    }
     // Here you can perform login authentication
     console.log("Login submitted with:", loginUsername, loginPassword);
   };
 
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    // Here you can perform registration logic, like validating passwords match, etc.
-    if (registerPassword !== confirmPassword) {
-      setError("Passwords do not match");
-    } else {
-      // Here you can perform further registration logic
-      console.log(
-        "Registration submitted with:",
-        registerUsername,
-        registerPassword
-      );
-      setError("");
-    }
-  };
+  // const handleRegisterSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Here you can perform registration logic, like validating passwords match, etc.
+  //   if (registerPassword !== confirmPassword) {
+  //     setError("Passwords do not match");
+  //   } else {
+  //     // Here you can perform further registration logic
+  //     console.log(
+  //       "Registration submitted with:",
+  //       registerUsername,
+  //       registerPassword
+  //     );
+  //     setError("");
+  //   }
+  // };
 
-  const isStrongPassword = (password) => {
-    // Password must be at least 8 characters long and contain at least one letter and one number
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    return passwordRegex.test(password);
-  };
+  // const isStrongPassword = (password) => {
+  //   // Password must be at least 8 characters long and contain at least one letter and one number
+  //   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  //   return passwordRegex.test(password);
+  // };
 
   return (
     <>

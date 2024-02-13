@@ -48,6 +48,11 @@ const Sidepanel = () => {
                 Feedback
               </Link>
             </li>
+            <li>
+              <Link to="/complaint" className="sidepanel-nav-menu">
+                Complaint
+              </Link>
+            </li>
           </ul>
           <Footer />
         </div>

@@ -49,12 +49,17 @@
   border-radius: 5px;
 }
 
+#admin-register{
+  text-decoration: none;
+  color: #0056b3;
+}
+
  #submit:hover {
   background-color: #0056b3;
 }
 
-#bottom-seperator{
-  margin-bottom: 55px;
+#admin-bottom-seperator{
+  margin-bottom: 82px;
 }
 
 #admin-login-form {

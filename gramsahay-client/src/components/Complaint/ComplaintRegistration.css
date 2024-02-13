@@ -1,14 +1,17 @@
-#main-user-reg-div{
+#main-complaint-reg-div{
     display: grid;
     margin: auto;
 }
-#user-reg{
+#complaint-reg{
     text-align: center;
 }
-#user-reg-header {
+#req-symbol{
+    color: red;
+}
+#complaint-reg-header {
     margin:5px ;
 }
-#user-reg-form {
+#complaint-reg-form {
   display: grid;
   grid-template-columns: 1fr; /* Single column layout by default */
   align-items: center;
@@ -26,9 +29,13 @@
   align-items: center;
 }
 
+
 #input-group > label {
   margin: 8px;
   width: calc(50% - 20px); 
+}
+#input-group > label > textarea {
+  width: calc(414%); 
 }
 
 #btn-group {

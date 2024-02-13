@@ -1,15 +1,27 @@
 // AdminLogin.js
 import React, { useState } from "react";
 import "./AdminLogin.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
+
+    /* PREVENTS EMPTY USERNAME OR PASSWORD
+    if (username === "" || password === "") {
+      setErrorMessage("Please enter both username and password.");
+    }*/
+
+    if (username === 'omkar' && password === "omkar")
+    {
+      navigate("/admin/dashboard");
+    }
+    /*
+    REGEX FOR PASSWORD AND USERNAME
     // Regex pattern for username: alphanumeric characters only, minimum length of 4
     const usernameRegex = /^[a-zA-Z0-9]{4,}$/;
     // Regex pattern for password: at least one uppercase, one lowercase, one digit, one special character, minimum length of 8
@@ -29,6 +41,7 @@ const AdminLogin = () => {
       );
       return;
     }
+    */
 
     // Here you can perform actual login logic
     console.log("Login successful");
@@ -42,9 +55,9 @@ const AdminLogin = () => {
     <>
       <div className="admin-login-container">
         <h2>Admin Login</h2>
-        {errorMessage && (
+        {/* {errorMessage && (
           <p className="admin-login-error-message">{errorMessage}</p>
-        )}
+        )} */}
         <form onSubmit={handleLogin}>
           <div id="admin-login-form">
             <div className="form-group">
@@ -70,14 +83,8 @@ const AdminLogin = () => {
             </button>
           </div>
         </form>
-        <div>
-          Not a user?{" "}
-          <Link to="/user/registeruser" id="user-register">
-            Register Now !
-          </Link>
-        </div>
       </div>
-      <div id="bottom-seperator"></div>
+      <div id="admin-bottom-seperator"></div>
     </>
   );
 };

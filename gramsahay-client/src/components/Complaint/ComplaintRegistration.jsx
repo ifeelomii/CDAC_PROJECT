@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./ComplaintRegistration.css";
 import axios from "axios";
-import "./GSreg.css";
-
-const GSRegistrationForm = () => {
+const ComplaintRegistration = () => {
   const [formData, setFormData] = useState({
-    uname: "",
-    pwd: "",
-    fname: "",
-    lname: "",
-    email: "",
-    phone_number: "",
-    state: "",
+    userid: "",
+    category: "",
+    description: "",
+    forGS: "1", //for GS or not
+    forAdmin: "0", //for Admin or not
+    status: "new",
+    state: "Maharashtra",
     district: "",
     taluka: "",
     village: "",
-    gsstatus:""
+    remarks: ""
   });
 
   const [error, setError] = useState("");
@@ -28,21 +27,21 @@ const GSRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   // Call API to register user
-    //   await axios.post("YOUR_REGISTRATION_API_ENDPOINT", formData);
-    //   setSuccess(true);
-    //   setError("");
-    // } catch (error) {
-    //   setError("Failed to register user. Please try again.");
-    //   console.error("Error registering user:", error);
-    // }
+    try {
+      // Call API to register user
+      await axios.post(" ", formData);
+      setSuccess(true);
+      setError("");
+    } catch (error) {
+      setError("Failed to register user. Please try again.");
+      console.error("Error registering user:", error);
+    }
     console.log(formData);
   };
 
   return (
-    <div id="main-gs-reg-div">
-      <h2 id="gs-reg">Gramsevak Registration</h2>
+    <div id="main-complaint-reg-div">
+      <h2 id="complaint-reg">Complaint Registration</h2>
       <div id="complaint-reg">
         {/* Display error if any */}
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -56,53 +55,78 @@ const GSRegistrationForm = () => {
         {/* UserID is Auto Generated */}
 
         <div id="line"></div>
-        <h3 id="gs-reg-header">Personal Information</h3>
-        <hr />
         <div id="input-group">
           <label>
-            Username:
-            <input
-              type="text"
-              name="uname"
-              value={formData.uname}
-              onChange={handleChange}
-              placeholder="Select A User Name"
+            Category <span id="req-symbol">*</span>:
+            <select
+              name="category"
               className="col-md-12"
+              value={formData.category}
+              onChange={handleChange}
+              placeholder="Select Category"
               required
-            />
+            >
+              <option value="">Select an option</option>
+              <option value="infrastructure">Infrastructure</option>
+              <option value="sanitation">Sanitation</option>
+              <option value="electricity">Electricity</option>
+              <option value="water">Water</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="education">Education</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            For GramSevak <span id="req-symbol">*</span>:
+            <select
+              name="forGS"
+              className="col-md-12"
+              value={formData.forGS}
+              onChange={handleChange}
+              placeholder="Select Authority"
+              aria-readonly
+              required
+            >
+              <option value="1">Gramsevak</option>
+            </select>
+          </label>
+          {/* <label>
+            For Admin <span id="req-symbol">*</span>:
+            <select
+              name="forAdmin"
+              className="col-md-12"
+              value={formData.forAdmin}
+              onChange={handleChange}
+              placeholder="Select Authority"
+              aria-readonly
+              required
+            >
+              <option value="0">Admin</option>
+            </select>
+          </label> */}
+          <label>
+            Status <span id="req-symbol">*</span>:
+            <select
+              name="status"
+              className="col-md-12"
+              value={formData.status}
+              onChange={handleChange}
+              placeholder="Select Authority"
+              aria-readonly
+              required
+            >
+              <option value="1">New Complaint</option>
+            </select>
           </label>
           <label>
-            Password:
+            User ID <span id="req-symbol">*</span>:
             <input
-              type="password"
-              name="pwd"
-              value={formData.pwd}
+              type="number"
+              name="userid"
+              value={formData.userid}
               onChange={handleChange}
-              placeholder="Enter Password"
-              className="col-md-12"
-              required
-            />
-          </label>
-          <label>
-            First Name:
-            <input
-              type="text"
-              name="fname"
-              value={formData.first_name}
-              onChange={handleChange}
-              placeholder="Enter Your First Name"
-              className="col-md-12"
-              required
-            />
-          </label>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              name="lname"
-              value={formData.last_name}
-              onChange={handleChange}
-              placeholder="Enter Your Last Name"
+              placeholder="Enter User ID"
               className="col-md-12"
               required
             />
@@ -110,37 +134,21 @@ const GSRegistrationForm = () => {
         </div>
         <div id="input-group">
           <label>
-            Email Address:
-            <input
-              type="email"
-              name="email"
-              value={formData.email_id}
+            Description <span id="req-symbol">*</span>:
+            <textarea
+              name="description"
+              value={formData.description}
               onChange={handleChange}
-              placeholder="Enter Your Email Id"
-              className="col-md-12"
-              required
-            />
-          </label>
-          <label>
-            Phone Number:
-            <input
-              type="number"
-              name="phone_number"
-              value={formData.phone_number}
-              onChange={handleChange}
-              placeholder="Enter Your Number"
-              className="col-md-12"
-              title="Please enter only numbers"
+              placeholder="Describe Your Complaint..."
+              // className="col-md-12"
               required
             />
           </label>
         </div>
         <div id="line"></div>
-        <h3 id="gs-reg-header">Residential Information</h3>
-        <hr />
         <div id="input-group">
           <label>
-            State:
+            State <span id="req-symbol">*</span>:
             <input
               type="text"
               name="state"
@@ -152,7 +160,7 @@ const GSRegistrationForm = () => {
             />
           </label>
           <label>
-            District:
+            District <span id="req-symbol">*</span>:
             <input
               type="text"
               name="district"
@@ -164,7 +172,7 @@ const GSRegistrationForm = () => {
             />
           </label>
           <label>
-            Taluka:
+            Taluka <span id="req-symbol">*</span>:
             <input
               type="text"
               name="taluka"
@@ -176,7 +184,7 @@ const GSRegistrationForm = () => {
             />
           </label>
           <label>
-            Village:
+            Village <span id="req-symbol">*</span>:
             <input
               type="text"
               name="village"
@@ -190,19 +198,19 @@ const GSRegistrationForm = () => {
         </div>
         <div id="input-group">
           <label>
-            Gramsevak Status:
+            Remarks:
             <input
               type="text"
-              name="sgstatus"
-              value={formData.gsstatus}
+              name="remarks"
+              value={formData.remarks}
               onChange={handleChange}
               placeholder="Enter Your Address"
               className="col-md-12"
-              required
             />
           </label>
         </div>
         <div id="last-line"></div>
+
         <div id="btn-group">
           <button type="submit" id="submit">
             Register
@@ -217,4 +225,4 @@ const GSRegistrationForm = () => {
   );
 };
 
-export default GSRegistrationForm;
+export default ComplaintRegistration;
