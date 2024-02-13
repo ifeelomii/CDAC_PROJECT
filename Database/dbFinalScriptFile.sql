@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS tbl_users (
     post_office VARCHAR(50),
     pin_code INT
 );
-INSERT INTO tbl_users 
+INSERT INTO tbl_user
 	(user_id, first_name, last_name, username, password, email_id, dob, phone_number, state, district, taluka, village, address, panchayat, post_office, pin_code)
 VALUES
 	-- ('10110','Omkar','Ware','Omkarware003','Omkarware@003','omkarware003@gmail.com','2001-10-06','9561466648','Maharashtra','District1','Taluka1','Village1','Beed','Ganesh Nagar near Old SP Office','Beed','Beed',431122),
