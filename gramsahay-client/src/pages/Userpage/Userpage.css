@@ -1,3 +1,5 @@
+/* CSS FOR AllUsers.jsx  */
+
 thead > tr > th{
     text-align: center;
     margin-top:2px ;
@@ -24,4 +26,33 @@ tbody > tr > td{
     align-self: center;
     justify-self: center;
     margin: 3px;
+}
+
+/* CSS FOR ShowUser.jsx */
+
+/* CSS FOR EditUser.jsx */
+
+.outer-edit-user-container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-edit-user-container{
+    min-width: 600px;
+    margin: 10px;
+}
+#input-group {
+  margin: 8px;
+  display: flex;
+  flex-wrap: wrap; /* Wrap input groups to the next line if needed */
+  align-items: center;
+}
+
+#input-group > label {
+  margin: 8px;
+}
+
+.label > label{
+    min-width: 210px;
 }

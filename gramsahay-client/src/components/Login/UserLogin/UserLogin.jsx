@@ -17,7 +17,7 @@ const UserLogin = () => {
     e.preventDefault();
 
     if (loginUsername === "omkar" && loginPassword === "omkar") {
-      navigate("/user/allusers");
+      navigate(`/users/alluserdetails/${loginUsername}`);
     }
     // Here you can perform login authentication
     console.log("Login submitted with:", loginUsername, loginPassword);

@@ -7,6 +7,9 @@
   border-radius: 5px;
 }
 
+.user-login-container{
+  min-height: 55.2vh;
+}
 .user-login-container h2 {
   margin-bottom: 20px;
 }

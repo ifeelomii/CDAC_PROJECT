@@ -15,10 +15,10 @@ const AdminLogin = () => {
     if (username === "" || password === "") {
       setErrorMessage("Please enter both username and password.");
     }*/
-
+    
     if (username === 'omkar' && password === "omkar")
     {
-      navigate("/admin/dashboard");
+      navigate(`/gramsevaks/allgramsevaks/${username}`);
     }
     /*
     REGEX FOR PASSWORD AND USERNAME

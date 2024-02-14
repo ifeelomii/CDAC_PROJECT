@@ -7,7 +7,9 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
+.gramsevak-login-container{
+  min-height: 55.2vh;
+}
 .gramsevak-login-container h2 {
   margin-bottom: 20px;
 }

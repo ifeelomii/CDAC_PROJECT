@@ -35,7 +35,7 @@ const AllUsers = () => {
       <div className="display-user-wrapper">
         <br></br>
         <h5>Welcome {params.username}</h5>
-        <Link to="/user/registeruser" id="action-user-btn">
+        <Link to="/users/adduser" id="action-user-btn">
           <button
             type="button"
             name="btn"
@@ -109,7 +109,7 @@ const AllUsers = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to={`/edit/${ob.userId}`} state={{ pdata: ob }}>
+                  <Link to={`/users/edituser/${ob.pid}`} state={{ userdata: ob }}>
                     <button
                       type="button"
                       name="btn"
@@ -121,7 +121,7 @@ const AllUsers = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.pid}`}>
+                  <Link to={`/users/viewuser/${ob.pid}`}>
                     <button
                       type="button"
                       name="btn"

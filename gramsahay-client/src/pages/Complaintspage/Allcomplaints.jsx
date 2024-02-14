@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import GramsevakService from "../../services/GramsevakService";
+import ComplaintService from "../../services/ComplaintService";
 import { Link, useParams } from "react-router-dom";
-import "./GSpage.css";
+import "./Complaintspage.css";
 
-const AllGS = () => {
-  const [gslist, setGsList] = useState([]);
+const Allcomplaints = () => {
+  const [complaintlist, setCompList] = useState([]);
 
   const params = useParams();
   // console.log(params.username)
   const fetchdata = () => {
-    GramsevakService.getAllGramsevaks()
+    ComplaintService.getAllComplaints()
       .then((result) => {
         console.log(result.data);
-        setGsList([...result.data]);
+        setCompList([...result.data]);
       })
       .catch((err) => {
         console.log("error occured", err);
@@ -21,8 +21,8 @@ const AllGS = () => {
   useEffect(() => {
     fetchdata();
   }, []);
-  const deleteGramsevak = (gsid) => {
-    GramsevakService.deleteGramsevak(gsid)
+  const deleteComplaint = (cid) => {
+    ComplaintService.deleteComplaint(cid)
       .then((result) => {
         console.log(result.data);
         fetchdata();
@@ -32,14 +32,14 @@ const AllGS = () => {
 
   return (
     <>
-      <div className="display-gs-wrapper">
+      <div className="display-comp-wrapper">
         <br></br>
         <h5>Welcome {params.username}</h5>
-        <Link to="/gramsevak/registergramsevak" id="action-gs-btn">
+        <Link to="/gramsevak/registergramsevak" id="action-comp-btn">
           <button
             type="button"
             name="btn"
-            id="action-user-btn"
+            id="action-comp-btn"
             className="btn btn-success"
           >
             {" "}
@@ -49,14 +49,16 @@ const AllGS = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">GS Id</th>
-              <th scope="col">Full Name</th>
-              <th scope="col">User Name</th>
-              <th scope="col">Phone Number</th>
+              <th scope="col">Complaint Id</th>
+              {/* <th scope="col">User Id</th> */}
+              <th scope="col">Category</th>
+              <th scope="col">Description</th>
+              <th scope="col">Posted At</th>
               <th scope="col">District</th>
               <th scope="col">Taluka</th>
               <th scope="col">Village</th>
               <th scope="col">Status</th>
+              <th scope="col">Remarks</th>
               <th
                 scope="col"
                 style={{
@@ -87,16 +89,18 @@ const AllGS = () => {
             </tr>
           </thead>
           <tbody>
-            {gslist.map((ob) => (
+            {complaintlist.map((ob) => (
               <tr>
-                <td>{ob.gsId}</td>
-                <td>{ob.firstName + ob.lastName}</td>
-                <td>{ob.username}</td>
-                <td>{ob.phoneNumber}</td>
+                <td>{ob.complaintId}</td>
+                {/* <td>{ob.user_id}</td> */}
+                <td>{ob.category}</td>
+                <td>{ob.description}</td>
+                <td>{ob.postedAt}</td>
                 <td>{ob.district}</td>
+                <td>{ob.taluka}</td>
                 <td>{ob.village}</td>
-                <td>{ob.address}</td>
-                <td>{ob.status?"Available":"Unavailable"}</td>
+                <td>{ob.status}</td>
+                <td>{ob.remarks?ob.remarks:"none"}</td>
                 <td>
                   <button
                     type="button"
@@ -104,7 +108,7 @@ const AllGS = () => {
                     id="delete"
                     className="btn btn-danger"
                     onClick={() => {
-                      deleteGramsevak(ob.userId);
+                      deleteComplaint(ob.userId);
                     }}
                   >
                     Delete
@@ -123,7 +127,7 @@ const AllGS = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.pid}`}>
+                  <Link to={`/view/${ob.cid}`}>
                     <button
                       type="button"
                       name="btn"
@@ -142,4 +146,4 @@ const AllGS = () => {
     </>
   );
 };
-export default AllGS;
+export default Allcomplaints;

@@ -21,8 +21,8 @@ const GSLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username === "omkar" && password === "omkarware@003") {
-      navigate(`/user/allusers/${username}`);
+    if (username === "omkar" && password === "omkar") {
+      navigate(`/users/alluserdetails/${username}`);
     }
     // Regular expression for validating username (6-12 alphanumeric characters)
     // const usernameRegex = /^[a-zA-Z0-9]{6,12}$/;

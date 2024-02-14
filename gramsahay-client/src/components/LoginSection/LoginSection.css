@@ -1,3 +1,7 @@
+.main-container{
+  margin-top: 7px;
+  min-height: 72vh;
+}
 .box-section {
   display: flex;
   justify-content: center;

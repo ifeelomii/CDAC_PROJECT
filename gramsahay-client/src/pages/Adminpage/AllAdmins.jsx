@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import GramsevakService from "../../services/GramsevakService";
+import AdminService from "../../services/AdminService";
 import { Link, useParams } from "react-router-dom";
-import "./GSpage.css";
+import "./Adminspage.css";
 
-const AllGS = () => {
-  const [gslist, setGsList] = useState([]);
+const AllAdmins = () => {
+  const [adminlist, setAdminList] = useState([]);
 
   const params = useParams();
   // console.log(params.username)
   const fetchdata = () => {
-    GramsevakService.getAllGramsevaks()
+    AdminService.getAllAdmins()
       .then((result) => {
         console.log(result.data);
-        setGsList([...result.data]);
+        setAdminList([...result.data]);
       })
       .catch((err) => {
         console.log("error occured", err);
@@ -21,8 +21,8 @@ const AllGS = () => {
   useEffect(() => {
     fetchdata();
   }, []);
-  const deleteGramsevak = (gsid) => {
-    GramsevakService.deleteGramsevak(gsid)
+  const deleteAdmin = (cid) => {
+    AdminService.deleteAdmin(cid)
       .then((result) => {
         console.log(result.data);
         fetchdata();
@@ -32,31 +32,29 @@ const AllGS = () => {
 
   return (
     <>
-      <div className="display-gs-wrapper">
+      <div className="display-admin-wrapper">
         <br></br>
         <h5>Welcome {params.username}</h5>
-        <Link to="/gramsevak/registergramsevak" id="action-gs-btn">
+        <Link to="/gramsevak/registergramsevak" id="action-admin-btn">
           <button
             type="button"
             name="btn"
-            id="action-user-btn"
+            id="action-comp-btn"
             className="btn btn-success"
           >
             {" "}
-            Add New Gramsevak
+            Add New Admin
           </button>
         </Link>
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">GS Id</th>
+              <th scope="col">Admin Id</th>
               <th scope="col">Full Name</th>
-              <th scope="col">User Name</th>
+              <th scope="col">Username</th>
+              <th scope="col">Password</th>
+              <th scope="col">Email Id</th>
               <th scope="col">Phone Number</th>
-              <th scope="col">District</th>
-              <th scope="col">Taluka</th>
-              <th scope="col">Village</th>
-              <th scope="col">Status</th>
               <th
                 scope="col"
                 style={{
@@ -87,16 +85,14 @@ const AllGS = () => {
             </tr>
           </thead>
           <tbody>
-            {gslist.map((ob) => (
+            {adminlist.map((ob) => (
               <tr>
-                <td>{ob.gsId}</td>
+                <td>{ob.adminId}</td>
                 <td>{ob.firstName + ob.lastName}</td>
                 <td>{ob.username}</td>
+                <td>{ob.password}</td>
+                <td>{ob.emailId}</td>
                 <td>{ob.phoneNumber}</td>
-                <td>{ob.district}</td>
-                <td>{ob.village}</td>
-                <td>{ob.address}</td>
-                <td>{ob.status?"Available":"Unavailable"}</td>
                 <td>
                   <button
                     type="button"
@@ -104,7 +100,7 @@ const AllGS = () => {
                     id="delete"
                     className="btn btn-danger"
                     onClick={() => {
-                      deleteGramsevak(ob.userId);
+                      deleteAdmin(ob.userId);
                     }}
                   >
                     Delete
@@ -123,7 +119,7 @@ const AllGS = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.pid}`}>
+                  <Link to={`/view/${ob.cid}`}>
                     <button
                       type="button"
                       name="btn"
@@ -142,4 +138,4 @@ const AllGS = () => {
     </>
   );
 };
-export default AllGS;
+export default AllAdmins;
