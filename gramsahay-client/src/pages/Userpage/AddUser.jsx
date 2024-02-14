@@ -1,7 +1,7 @@
-import UserRegistrationForm from "../../components/Registration/User/Userreg"
+import AdminRegistrationForm from "../../components/Registration/Admin/Adminreg";
 
 const AddUser = () => {
-    return <><UserRegistrationForm/></>
+    return <><AdminRegistrationForm/></>
 }
 
 export default AddUser;

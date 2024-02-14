@@ -25,3 +25,25 @@ tbody > tr > td{
     justify-self: center;
     margin: 3px;
 }
+
+/* CSS FOR EditGS.jsx */
+.outer-edit-gs-container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-edit-gs-container{
+    min-width: 600px;
+    margin: 10px;
+}
+#input-group {
+  margin: 8px;
+  display: flex;
+  flex-wrap: wrap; /* Wrap input groups to the next line if needed */
+  align-items: center;
+}
+
+#input-group > label{
+    min-width: 200px;
+}

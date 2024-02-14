@@ -35,7 +35,7 @@ const AllGS = () => {
       <div className="display-gs-wrapper">
         <br></br>
         <h5>Welcome {params.username}</h5>
-        <Link to="/gramsevak/registergramsevak" id="action-gs-btn">
+        <Link to="/gramsevakas/addgramsevak" id="action-gs-btn">
           <button
             type="button"
             name="btn"
@@ -96,7 +96,7 @@ const AllGS = () => {
                 <td>{ob.district}</td>
                 <td>{ob.village}</td>
                 <td>{ob.address}</td>
-                <td>{ob.status?"Available":"Unavailable"}</td>
+                <td>{ob.status ? "Available" : "Unavailable"}</td>
                 <td>
                   <button
                     type="button"
@@ -104,14 +104,14 @@ const AllGS = () => {
                     id="delete"
                     className="btn btn-danger"
                     onClick={() => {
-                      deleteGramsevak(ob.userId);
+                      deleteGramsevak(ob.gsId);
                     }}
                   >
                     Delete
                   </button>
                 </td>
                 <td>
-                  <Link to={`/edit/${ob.userId}`} state={{ pdata: ob }}>
+                  <Link to={`/gramsevaks/editgramsevak/${ob.gsId}`} state={{ gsdata: ob }}>
                     <button
                       type="button"
                       name="btn"
@@ -123,7 +123,7 @@ const AllGS = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.pid}`}>
+                  <Link to={`/gramsevak/viewgramsevak/${ob.gsId}`}>
                     <button
                       type="button"
                       name="btn"

@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import UserService from "../../services/UserService";
-import './Userpage.css'
+import "./GSpage.css";
+import GramsevakService from "../../services/GramsevakService";
 
-
-const Showuser = () => {
-  
-  const params  = useParams();
+const ShowGS = () => {
+  const params = useParams();
   const [userdetails, setUserDetails] = useState({
-    userId: "",
+    adminId: "",
     firstName: "",
     lastName: "",
     username: "",
     phoneNumber: "",
-    district: "",
-    village: "",
-    address: ""
+    emailId: ""
   });
 
   useEffect(() => {
     console.log("id:" + params.uid);
-    UserService.getUserById(params.uid)
+    GramsevakService.getGramsevakById(params.uid)
       .then((result) => {
         console.log(result);
         setUserDetails({ ...result.data });
@@ -33,11 +29,11 @@ const Showuser = () => {
     <div>
       <div className="card">
         <div className="info-card-body">
-          <h2 className="info-card-title">User Information</h2>
+          <h2 className="info-card-title">Gramsevak Information</h2>
           <div id="line"></div>
           <div id="info-card">
-            <h4>User Id:- </h4>
-            <h4> {userdetails.userId} </h4>
+            <h4>Gramsevak Id:- </h4>
+            <h4> {userdetails.gsId} </h4>
           </div>
           <div id="info-card">
             <h4>First Name:- </h4>
@@ -64,16 +60,14 @@ const Showuser = () => {
             <h4> {userdetails.village} </h4>
           </div>
           <div id="info-card">
-            <h4>Address:- </h4>
-            <h4> {userdetails.address} </h4>
+            <h4>Status:- </h4>
+            <h4> {userdetails.status ? "Available" : "Unavailable"} </h4>
           </div>
           <div id="info-seperator"></div>
-
-          
         </div>
       </div>
     </div>
   );
 };
 
-export default Showuser;
+export default ShowGS;

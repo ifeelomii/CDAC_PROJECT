@@ -1,61 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import UserService from "../../services/UserService";
-import "./Userpage.css";
-const EditUser = () => {
+import "./GSpage.css";
+import GramsevakService from "../../services/GramsevakService";
+
+const EditGS = () => {
   const location = useLocation();
 
   const [formdetails, setformdetails] = useState({
-    userId:"",
+    gsId: "",
     firstName: "",
     lastName: "",
     emailId: "",
-    dob: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    status: ""
   });
 
   const navigate = useNavigate();
   useEffect(() => {
-    setformdetails({ ...location.state.userdata });
-    console.log(formdetails)
+    setformdetails({ ...location.state.gsdata });
+    console.log(formdetails);
   }, []);
-  const updateuser = () => {
+
+  const updategs = () => {
     console.log("Form Details : ", formdetails);
-    // UserService.updateUser(formdetails)
-    //   .then((result) => {
-    //     console.log(result.data);
-    //     //clear the form
-    //     setformdetails({
-    //       userID:"",
-    //       fname: "",
-    //       lname: "",
-    //       email: "",
-    //       dob: "",
-    //       phone_number: ""
-    //     });
-    //     navigate("/users/alluserdetails/:username");
-    //   })
-    //   .catch((err) => {
-    //     console.log("error occured", err);
-    //   });
+    //     GramsevakService.updateGramsevak(formdetails)
+    //       .then((result) => {
+    //         console.log(result.data);
+    //         //clear the form
+    //         setformdetails({
+    //           gsIdID:"",
+    //           fname: "",
+    //           lname: "",
+    //           email: "",
+    //           phone_number: "",
+    //           status:""
+    //         });
+    //         navigate("/users/alluserdetails/:username");
+    //       })
+    //       .catch((err) => {
+    //         console.log("error occured", err);
+    //       });
   };
 
   return (
-    <div className="outer-edit-user-container">
-      <div className="inner-edit-user-container">
+    <div className="outer-edit-gs-container">
+      <div className="inner-edit-gs-container">
         <form>
           <div className="form-group" id="input-group">
-            <label>User Id:</label>
+            <label>Gramsevak Id:</label>
             <input
               type="text"
               className="form-control col-md-12"
-              id="uid"
-              name="userId"
-              value={formdetails.userId}
+              id="gsId"
+              name="gsId"
+              value={formdetails.gsId}
               onChange={(event) => {
                 setformdetails({
                   ...formdetails,
-                  userId: event.target.value
+                  gsId: event.target.value
                 });
               }}
               readOnly
@@ -107,19 +109,6 @@ const EditUser = () => {
             />
           </div>
           <div className="form-group label" id="input-group">
-            <label htmlFor="dob">Date Of Birth:</label>
-            <input
-              type="date"
-              className="form-control col-md-12"
-              id="dob"
-              name="dob"
-              value={formdetails.dob}
-              onChange={(event) => {
-                setformdetails({ ...formdetails, dob: event.target.value });
-              }}
-            />
-          </div>
-          <div className="form-group label" id="input-group">
             <label htmlFor="phone_number">Phone Number:</label>
             <input
               type="number"
@@ -136,13 +125,27 @@ const EditUser = () => {
               }}
             />
           </div>
+          <div className="form-group label" id="input-group">
+            <label htmlFor="dob">Status:</label>
+            <input
+              type="text"
+              className="form-control col-md-12"
+              id="status"
+              name="status"
+              value={formdetails.status ? "Available" : "Unavailable"}
+              onChange={(event) => {
+                setformdetails({ ...formdetails, status: event.target.value });
+              }}
+              readOnly
+            />
+          </div>
           <button
             type="button"
             className="btn btn-primary rounded-pill"
             id="input-group"
-            onClick={updateuser}
+            onClick={updategs}
           >
-            Update User
+            Update Gramsevak
           </button>
         </form>
       </div>
@@ -150,4 +153,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default EditGS;

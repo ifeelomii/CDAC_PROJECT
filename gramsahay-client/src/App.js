@@ -8,7 +8,6 @@ import AdminLogin from "./components/Login/AdminLogin/AdminLogin";
 import GSLogin from "./components/Login/GSLogin/GSLogin";
 import UserLogin from "./components/Login/UserLogin/UserLogin";
 import Feedback from "./components/Feedback/Feedback";
-import GSRegistrationForm from "./components/Registration/GS/GSreg";
 import ComplaintRegistration from "./components/Complaint/ComplaintRegistration";
 import LoginSection from "./components/LoginSection/LoginSection";
 import AdminDashboard from "./pages/Adminpage/AdminDashboard";
@@ -19,6 +18,10 @@ import AllAdmins from "./pages/Adminpage/AllAdmins";
 import Showuser from "./pages/Userpage/ShowUser";
 import AddUser from "./pages/Userpage/AddUser";
 import EditUser from "./pages/Userpage/EditUser";
+import AddGS from "./pages/GSpage/AddGS";
+import AddAdmin from "./pages/Adminpage/AddAdmin";
+import EditGS from "./pages/GSpage/EditGS";
+import ShowGS from "./pages/GSpage/ShowGS";
 function App() {
   return (
     <>
@@ -34,16 +37,9 @@ function App() {
           <Route path="/feedback" element={<Feedback />} />
 
           {/* USER PATHS */}
-          <Route
-            path="/users/adduser"
-            element={<AddUser />}
-          />
+          <Route path="/users/adduser" element={<AddUser />} />
 
-          <Route
-            path="/users/edituser/:id"
-            element={<EditUser />}
-          />
-
+          <Route path="/users/edituser/:id" element={<EditUser />} />
 
           <Route path="/login/user" element={<UserLogin />} />
 
@@ -52,15 +48,16 @@ function App() {
             element={<AllUsers />}
           />
 
-          <Route path="/users/viewuser/:uid" element={<Showuser />} />
+          <Route path="/users/viewusers/:uid" element={<Showuser />} />
 
           {/* GRAMSEVAK PATHS */}
-          <Route
-            path="/gramsevaks/registergramsevak"
-            element={<GSRegistrationForm />}
-          />
+          <Route path="/gramsevakas/addgramsevak" element={<AddGS />} />
 
           <Route path="/login/gramsevak" element={<GSLogin />} />
+
+          <Route path="/gramsevaks/editgramsevak/:id" element={<EditGS />} />
+
+          <Route path="/gramsevak/viewgramsevak/:uid" element={<ShowGS />} />
 
           <Route
             path="/gramsevaks/allgramsevaks/:username"
@@ -77,6 +74,8 @@ function App() {
 
           {/* ADMIN PATHS */}
           <Route path="/login/admin" element={<AdminLogin />} />
+
+          <Route path="/admins/addadmin" element={<AddAdmin />} />
 
           <Route path="/admins/alladmins/:username" element={<AllAdmins />} />
 

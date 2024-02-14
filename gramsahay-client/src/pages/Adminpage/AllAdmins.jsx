@@ -35,7 +35,7 @@ const AllAdmins = () => {
       <div className="display-admin-wrapper">
         <br></br>
         <h5>Welcome {params.username}</h5>
-        <Link to="/gramsevak/registergramsevak" id="action-admin-btn">
+        <Link to="/admin/addadmin" id="action-admin-btn">
           <button
             type="button"
             name="btn"
@@ -100,14 +100,14 @@ const AllAdmins = () => {
                     id="delete"
                     className="btn btn-danger"
                     onClick={() => {
-                      deleteAdmin(ob.userId);
+                      deleteAdmin(ob.adminId);
                     }}
                   >
                     Delete
                   </button>
                 </td>
                 <td>
-                  <Link to={`/edit/${ob.userId}`} state={{ pdata: ob }}>
+                  <Link to={`/edit/${ob.adminId}`} state={{ admindata: ob }}>
                     <button
                       type="button"
                       name="btn"
@@ -119,7 +119,7 @@ const AllAdmins = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.cid}`}>
+                  <Link to={`/view/${ob.adminId}`}>
                     <button
                       type="button"
                       name="btn"

@@ -4,9 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import './Userpage.css' 
 
 const AllUsers = () => {
+  const params = useParams();
+
   const [userlist, setUserList] = useState([]);
   
-  const params = useParams();
   // console.log(params.username)
   const fetchdata = () => {
     UserService.getAllUsers   ()
@@ -109,7 +110,7 @@ const AllUsers = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to={`/users/edituser/${ob.pid}`} state={{ userdata: ob }}>
+                  <Link to={`/users/edituser/${ob.userId}`} state={{ userdata: ob }}>
                     <button
                       type="button"
                       name="btn"
@@ -121,7 +122,7 @@ const AllUsers = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/users/viewuser/${ob.pid}`}>
+                  <Link to={`/users/viewusers/${ob.userId}`} >
                     <button
                       type="button"
                       name="btn"
