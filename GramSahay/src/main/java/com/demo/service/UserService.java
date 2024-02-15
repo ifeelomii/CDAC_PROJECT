@@ -1,47 +1,69 @@
 package com.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.dao.UserDao;
-import com.demo.models.User;
+import com.demo.dao.IUserDao;
+import com.demo.model.User;
 
 @Service
 public class UserService implements IUserService {
 	
 	@Autowired
-	private UserDao udao;	
+	private IUserDao udao;
+
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return udao.findAll();
+	}
+
+	@Override
+	public User getUserById(int userId) {
+		// TODO Auto-generated method stub
+		Optional<User> op=udao.findById(userId);
+		if(op.isPresent()) {
+			 return op.get();
+		 }
+		 
+		return null;
+	}
+
+	@Override
+	public void addnewUser(User user) {
+		udao.save(user);
+		
+	}
+
+	@Override
+	public void updateUserById(User adm) {
+		// TODO Auto-generated method stub
+		Optional<User> user=udao.findById(adm.getUserId());
+		if(user.isPresent()) {
+			User a=user.get();
+			a.setFirstName(adm.getFirstName());
+			a.setLastName(adm.getLastName());
+			a.setUsername(adm.getUsername());
+			a.setPhoneNumber(adm.getPhoneNumber());
+			a.setEmailId(adm.getEmailId());
+			udao.save(a);
+		}
+		
+	}
+
+	@Override
+	public void RemoveById(int userId) {
+		udao.deleteById(userId);
+		}
+		
+	}
+
 	
-	@Override
-	public boolean validateUserServices(User user) {
-		return udao.validateUserDao(user);
-	}
 	
-	@Override
-	public List<User> getAllUsersServices() {
-		return udao.getAllUsersDao();
-	}
+	
+	
 
-	@Override
-	public User getByIdServices(int id) {
-		return udao.getByIdDao(id);
-	}
 
-	@Override
-	public void addNewUserServices(User user) {
-		udao.addNewUserDao(user);
-	}
-
-	@Override
-	public void updateUserServices(User user) {
-		udao.updateUserDao(user);
-	}
-
-	@Override
-	public void deleteUserByIdServices(int id) {
-		udao.deleteUserByIdDao(id);
-	}
-
-}

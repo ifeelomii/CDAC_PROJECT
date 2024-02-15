@@ -1,20 +1,10 @@
 package com.demo.dao;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.demo.models.Gramsevak;
+import com.demo.model.Gramsevak;
 
-public interface IGramsevakDao {
 
-	boolean validateGramsevakDao(Gramsevak gs);
-	
-	List<Gramsevak> getAllGramsevaksDao();
-	
-	Gramsevak getByIdDao(int id);
-	
-	void addNewGramsevakDao(Gramsevak gs);
-	
-	void updateGramsevakDao(Gramsevak gs);
-	
-	void deleteGramsevakByIdDao(int id);
+public interface IGramsevakDao extends JpaRepository<Gramsevak,Integer> {
+
 }

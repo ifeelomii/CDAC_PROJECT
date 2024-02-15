@@ -1,18 +1,19 @@
+
 package com.demo.service;
 
 import java.util.List;
-import com.demo.models.User;
+import com.demo.model.User;
 
 public interface IUserService {
-	boolean validateUserServices(User user);
+
+	List<User> getUsers();
+
+	User getUserById(int userId);
+
+	void addnewUser(User user);
+
+	void updateUserById(User user);
+
+	void RemoveById(int userId);
 	
-	List<User> getAllUsersServices();
-
-	User getByIdServices(int id);
-
-	void addNewUserServices(User user);
-
-	void updateUserServices(User user);
-
-	void deleteUserByIdServices(int id);
 }

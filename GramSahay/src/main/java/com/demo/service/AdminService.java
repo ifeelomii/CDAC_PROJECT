@@ -1,46 +1,55 @@
 package com.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.demo.dao.AdminDao;
-import com.demo.models.Admin;
+import com.demo.dao.IAdminDao;
+import com.demo.model.Admin;
 
+@Service 
 public class AdminService implements IAdminService {
 
 	@Autowired
-	private AdminDao adminDao;
-
+	private IAdminDao adao;
 	@Override
-	public boolean validateAdminServices(Admin admin) {
-		return adminDao.validateAdminDao(admin);
+	public List<Admin> getAdmins() {
+		return adao.findAll();
 	}
 
 	@Override
-	public List<Admin> getAllAdminsServices() {
-		return adminDao.getAllAdminsDao();
+	public void addnewAdmin(Admin adm) {
+		adao.save(adm);
 	}
 
 	@Override
-	public Admin getByIdServices(int id) {
-		return adminDao.getByIdDao(id);
+	public Admin getAdminById(int adminID) {
+		Optional<Admin> op=adao.findById(adminID);
+		if(op.isPresent()) {
+			 return op.get();
+		 }
+		 return null;	
 	}
 
 	@Override
-	public void addNewAdminServices(Admin admin) {
-		adminDao.addNewAdminDao(admin);
+	public void updateById(Admin adm) {
+		Optional<Admin> admin=adao.findById(adm.getAdminId());
+		if(admin.isPresent()) {
+			Admin a=admin.get();
+			a.setFirstName(adm.getFirstName());
+			a.setLastName(adm.getLastName());
+			a.setUsername(adm.getUsername());
+			a.setPhoneNumber(adm.getPhoneNumber());
+			a.setEmailId(adm.getEmailId());
+			adao.save(a);
+		}		
 	}
 
 	@Override
-	public void updateAdminServices(Admin admin) {
-		adminDao.updateAdminDao(admin);
+	public void deleteById(int adminId) {
+		adao.deleteById(adminId);
 	}
-
-	@Override
-	public void deleteAdminByIdServices(int id) {
-		adminDao.deleteAdminByIdDao( id);
-	}
-	
 
 }

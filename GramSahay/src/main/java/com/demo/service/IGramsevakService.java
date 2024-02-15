@@ -2,18 +2,18 @@ package com.demo.service;
 
 import java.util.List;
 
-import com.demo.models.Gramsevak;
+import com.demo.model.Gramsevak;
 
 public interface IGramsevakService {
-	boolean validateGramsevakServices(Gramsevak gs);
-	
-	List<Gramsevak> getAllGramsevaksServices();
 
-	Gramsevak getByIdServices(int id);
+	List<Gramsevak> getAllGs();
 
-	void addNewGramsevakServices(Gramsevak gs);
+	Gramsevak getGsById(int gsId);
 
-	void updateGramsevakServices(Gramsevak gs);
+	void addnewGs(Gramsevak gramsevak);
 
-	void deleteGramsevakByIdServices(int id);
+	void updateGsById(Gramsevak gramsevak);
+
+	void deleteGsById(int gsId);
+
 }

@@ -2,19 +2,16 @@ package com.demo.service;
 
 import java.util.List;
 
-import com.demo.models.Admin;
-import com.demo.models.Gramsevak;
+import com.demo.model.Admin;
 
 public interface IAdminService {
-	boolean validateAdminServices(Admin admin);
-	
-	List<Admin> getAllAdminsServices();
+	List<Admin> getAdmins();
 
-	Admin getByIdServices(int id);
+	void addnewAdmin(Admin adm);
 
-	void addNewAdminServices(Admin admin);
+	Admin getAdminById(int adminID);
 
-	void updateAdminServices(Admin admin);
+	void updateById(Admin adm);
 
-	void deleteAdminByIdServices(int id);
+	void deleteById(int adminId);
 }
