@@ -1,0 +1,26 @@
+thead > tr > th{
+    text-align: center;
+    margin-top:2px ;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+tbody > tr > td{
+    text-align: center;
+    border-bottom: 2px solid gray;
+}
+
+.display-admin-wrapper{
+    min-height: 73vh;
+}
+#display-admin-wrapper > link > button{
+    justify-content: center;
+}
+
+#action-admin-btn{
+    text-decoration: none;
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    margin: 3px;
+}
