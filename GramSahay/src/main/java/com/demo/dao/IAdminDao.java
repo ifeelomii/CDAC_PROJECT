@@ -1,20 +1,10 @@
 package com.demo.dao;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.demo.model.Admin;
 
-import com.demo.models.Admin;
+@Repository
+public interface IAdminDao extends JpaRepository<Admin,Integer>{
 
-public interface IAdminDao {
-	
-	boolean validateAdminDao(Admin admin);
-	
-	List<Admin> getAllAdminsDao();
-	
-	Admin getByIdDao(int id);
-	
-	void addNewAdminDao(Admin admin);
-	
-	void updateAdminDao(Admin admin);
-	
-	void deleteAdminByIdDao(int id);
 }

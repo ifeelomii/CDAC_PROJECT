@@ -1,19 +1,11 @@
 package com.demo.dao;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.demo.models.User;
 
-public interface IUserDao {
-	boolean validateUserDao(User user);
+import com.demo.model.User;
+
+public interface IUserDao extends JpaRepository<User,Integer> {
 	
-	List<User> getAllUsersDao();
-	
-	User getByIdDao(int id);
-	
-	void addNewUserDao(User user);
-	
-	void updateUserDao(User user);
-	
-	void deleteUserByIdDao(int id);
+
 }
