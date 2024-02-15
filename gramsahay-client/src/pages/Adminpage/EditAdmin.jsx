@@ -1,48 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./GSpage.css";
-import GramsevakService from "../../services/GramsevakService";
+import "./Adminspage.css";
+import AdminService from "../../services/AdminService";
 
-const EditGS = () => {
+const EditAdmin = () => {
   const location = useLocation();
 
   const [formdetails, setformdetails] = useState({
-    gsId: "",
-    username:"",
+    adminId: "",
+    username: "",
     firstName: "",
     lastName: "",
     emailId: "",
-    phoneNumber: "",
-    status: ""
+    phoneNumber: ""
   });
 
   const navigate = useNavigate();
   useEffect(() => {
-    setformdetails({ ...location.state.gsdata });
+    setformdetails({ ...location.state.admindata });
     console.log(formdetails);
   }, []);
 
-  const updategs = () => {
+  const updateadmin = () => {
     console.log("Form Details : ", formdetails);
-        GramsevakService.updateGramsevak(formdetails)
-          .then((result) => {
-            console.log(result.data);
-            let un = formdetails.username;
-            //clear the form
-            setformdetails({
-              gsIdID: "",
-              username: "",
-              fname: "",
-              lname: "",
-              email: "",
-              phone_number: "",
-              status: ""
-            });
-            navigate(`/gramsevaks/allgramsevaks/${un}`);
-          })
-          .catch((err) => {
-            console.log("error occured", err);
-          });
+    AdminService.updateAdmin(formdetails)
+      .then((result) => {
+          console.log(formdetails.username);
+          let un = formdetails.username;
+        //clear the form
+        setformdetails({
+          adminId: "",
+          username: "",
+          firstName: "",
+          lastName: "",
+          emailId: "",
+          phoneNumber: ""
+        });
+        navigate(`/admins/alladmins/${un}`);
+      })
+      .catch((err) => {
+        console.log("error occured", err);
+      });
   };
 
   return (
@@ -50,34 +48,17 @@ const EditGS = () => {
       <div className="inner-edit-gs-container">
         <form>
           <div className="form-group" id="input-group">
-            <label>Gramsevak Id:</label>
+            <label>Admin Id:</label>
             <input
               type="text"
               className="form-control col-md-12"
-              id="gsId"
-              name="gsId"
-              value={formdetails.gsId}
+              id="adminId"
+              name="adminId"
+              value={formdetails.adminId}
               onChange={(event) => {
                 setformdetails({
                   ...formdetails,
-                  gsId: event.target.value
-                });
-              }}
-              readOnly
-            />
-          </div>
-          <div className="form-group" id="input-group">
-            <label>User Name:</label>
-            <input
-              type="text"
-              className="form-control col-md-12"
-              id="username"
-              name="username,"
-              value={formdetails.username}
-              onChange={(event) => {
-                setformdetails({
-                  ...formdetails,
-                  username: event.target.value
+                  adminId: event.target.value
                 });
               }}
               readOnly
@@ -145,25 +126,11 @@ const EditGS = () => {
               }}
             />
           </div>
-          <div className="form-group label" id="input-group">
-            <label htmlFor="dob">Status:</label>
-            <input
-              type="text"
-              className="form-control col-md-12"
-              id="status"
-              name="status"
-              value={formdetails.status ? "Available" : "Unavailable"}
-              onChange={(event) => {
-                setformdetails({ ...formdetails, status: event.target.value });
-              }}
-              readOnly
-            />
-          </div>
           <button
             type="button"
             className="btn btn-primary rounded-pill"
             id="input-group"
-            onClick={updategs}
+            onClick={updateadmin}
           >
             Update Gramsevak
           </button>
@@ -173,4 +140,4 @@ const EditGS = () => {
   );
 };
 
-export default EditGS;
+export default EditAdmin;

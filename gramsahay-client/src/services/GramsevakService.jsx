@@ -7,6 +7,9 @@ class GramsevakService {
   getGramsevakById(gsid) {
     return axios.get(baseUrl + "gramsevaks/" + gsid);
   }
+  getGramsevakByUsername(username) {
+    return axios.get(baseUrl + "gramsevak/" + username);
+  }
   addGramsevak(gramsevak) {
     return axios.post(baseUrl + "gramsevaks/" + gramsevak.gsid, gramsevak);
   }

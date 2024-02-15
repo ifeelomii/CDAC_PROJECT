@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./ComplaintRegistration.css";
 import axios from "axios";
+import ComplaintService from "../../services/ComplaintService";
 const ComplaintRegistration = () => {
   const [formData, setFormData] = useState({
     userid: "",
@@ -29,7 +30,7 @@ const ComplaintRegistration = () => {
     e.preventDefault();
     try {
       // Call API to register user
-      await axios.post(" ", formData);
+      ComplaintService.addComplaint(formData);
       setSuccess(true);
       setError("");
     } catch (error) {
@@ -91,20 +92,6 @@ const ComplaintRegistration = () => {
               <option value="1">Gramsevak</option>
             </select>
           </label>
-          {/* <label>
-            For Admin <span id="req-symbol">*</span>:
-            <select
-              name="forAdmin"
-              className="col-md-12"
-              value={formData.forAdmin}
-              onChange={handleChange}
-              placeholder="Select Authority"
-              aria-readonly
-              required
-            >
-              <option value="0">Admin</option>
-            </select>
-          </label> */}
           <label>
             Status <span id="req-symbol">*</span>:
             <select
@@ -140,7 +127,7 @@ const ComplaintRegistration = () => {
               value={formData.description}
               onChange={handleChange}
               placeholder="Describe Your Complaint..."
-              // className="col-md-12"
+              className="col-md-12"
               required
             />
           </label>
@@ -220,6 +207,7 @@ const ComplaintRegistration = () => {
             Reset
           </button>
         </div>
+        <div id="seperator"></div>
       </form>
     </div>
   );

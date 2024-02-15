@@ -47,3 +47,11 @@ tbody > tr > td{
 #input-group > label{
     min-width: 200px;
 }
+
+#gs-dashboard-main-container{
+    min-height: 71.6vh;
+}
+
+#btn-group{
+    margin-bottom: 8px;
+}

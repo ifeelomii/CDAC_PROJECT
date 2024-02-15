@@ -7,6 +7,9 @@ class AdminService {
   getAdminById(admid) {
     return axios.get(baseUrl + "admins/" + admid);
   }
+  getAdminByUsername(username) {
+    return axios.get(baseUrl + "admin/" + username);
+  }
   addAdmin(admin) {
     return axios.post(baseUrl + "admins/" + admin.admid, admin);
   }

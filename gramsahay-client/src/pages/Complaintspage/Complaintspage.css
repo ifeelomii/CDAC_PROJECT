@@ -25,3 +25,9 @@ tbody > tr > td{
     justify-self: center;
     margin: 3px;
 }
+
+/* CSS FOR ShowComplaint.jsx */
+#desc{
+    min-width: fit-content;
+    max-width: 200px;
+}

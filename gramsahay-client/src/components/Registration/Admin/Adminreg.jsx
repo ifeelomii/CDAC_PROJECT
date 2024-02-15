@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Adminreg.css";
+import UserService from "../../../services/UserService";
 
 const AdminRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -23,15 +24,14 @@ const AdminRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   // Call API to register user
-    //   await axios.post("YOUR_REGISTRATION_API_ENDPOINT", formData);
-    //   setSuccess(true);
-    //   setError("");
-    // } catch (error) {
-    //   setError("Failed to register user. Please try again.");
-    //   console.error("Error registering user:", error);
-    // }
+    try {
+      UserService.addUser(formData);
+      setSuccess(true);
+      setError("");
+    } catch (error) {
+      setError("Failed to register user. Please try again.");
+      console.error("Error registering user:", error);
+    }
     console.log(formData);
   };
 

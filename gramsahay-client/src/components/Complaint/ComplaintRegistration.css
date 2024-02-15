@@ -48,6 +48,10 @@
   background-color: azure;
 }
 
+#seperator{
+  margin-bottom: 10px;
+}
+
 #btn-group > button {
   width: 200px;
   border-radius: 8px;

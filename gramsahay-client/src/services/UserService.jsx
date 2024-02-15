@@ -7,6 +7,9 @@ class UserService {
     getUserById(uid){
         return axios.get(baseUrl + "users/" + uid);
     }
+    getUserByUsername(username){
+        return axios.get(baseUrl + "user/" + username);
+    }
     addUser(user){
         return axios.post(baseUrl + "users/", user);
     }

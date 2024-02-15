@@ -90,19 +90,19 @@ const AllGS = () => {
             {gslist.map((ob) => (
               <tr>
                 <td>{ob.gsId}</td>
-                <td>{ob.firstName + ob.lastName}</td>
+                <td>{ob.firstName + " " + ob.lastName}</td>
                 <td>{ob.username}</td>
                 <td>{ob.phoneNumber}</td>
                 <td>{ob.district}</td>
+                <td>{ob.taluka}</td>
                 <td>{ob.village}</td>
-                <td>{ob.address}</td>
                 <td>{ob.status ? "Available" : "Unavailable"}</td>
                 <td>
                   <button
                     type="button"
                     name="btn"
                     id="delete"
-                    className="btn btn-danger"
+                    className="btn btn-danger rounded-pill"
                     onClick={() => {
                       deleteGramsevak(ob.gsId);
                     }}
@@ -111,12 +111,15 @@ const AllGS = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to={`/gramsevaks/editgramsevak/${ob.gsId}`} state={{ gsdata: ob }}>
+                  <Link
+                    to={`/gramsevaks/editgramsevak/${ob.gsId}`}
+                    state={{ gsdata: ob }}
+                  >
                     <button
                       type="button"
                       name="btn"
                       id="edit"
-                      className="btn btn-primary"
+                      className="btn btn-primary rounded-pill"
                     >
                       Edit
                     </button>
@@ -128,7 +131,7 @@ const AllGS = () => {
                       type="button"
                       name="btn"
                       id="view"
-                      className="btn btn-info"
+                      className="btn btn-info rounded-pill"
                     >
                       View
                     </button>

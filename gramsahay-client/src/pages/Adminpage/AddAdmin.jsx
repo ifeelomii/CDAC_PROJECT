@@ -3,7 +3,9 @@ import AdminRegistrationForm from "../../components/Registration/Admin/Adminreg"
 const AddAdmin = () => {
   return (
     <>
-      <AdminRegistrationForm />
+      <div id="admin-reg-page">
+        <AdminRegistrationForm />
+      </div>
     </>
   );
 };

@@ -35,7 +35,6 @@ const AllUsers = () => {
     <>
       <div className="display-user-wrapper">
         <br></br>
-        <h5>Welcome {params.username}</h5>
         <Link to="/users/adduser" id="action-user-btn">
           <button
             type="button"
@@ -90,7 +89,7 @@ const AllUsers = () => {
             {userlist.map((ob) => (
               <tr>
                 <td>{ob.userId}</td>
-                <td>{ob.firstName + ob.lastName}</td>
+                <td>{ob.firstName + " " + ob.lastName}</td>
                 <td>{ob.username}</td>
                 <td>{ob.phoneNumber}</td>
                 <td>{ob.district}</td>
@@ -101,7 +100,7 @@ const AllUsers = () => {
                     type="button"
                     name="btn"
                     id="delete"
-                    className="btn btn-danger"
+                    className="btn btn-danger rounded-pill"
                     onClick={() => {
                       deleteUser(ob.userId);
                     }}
@@ -110,24 +109,27 @@ const AllUsers = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to={`/users/edituser/${ob.userId}`} state={{ userdata: ob }}>
+                  <Link
+                    to={`/users/edituser/${ob.userId}`}
+                    state={{ userdata: ob }}
+                  >
                     <button
                       type="button"
                       name="btn"
                       id="edit"
-                      className="btn btn-primary"
+                      className="btn btn-primary rounded-pill"
                     >
                       Edit
                     </button>
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/users/viewusers/${ob.userId}`} >
+                  <Link to={`/users/viewusers/${ob.userId}`}>
                     <button
                       type="button"
                       name="btn"
                       id="view"
-                      className="btn btn-info"
+                      className="btn btn-info rounded-pill"
                     >
                       View
                     </button>

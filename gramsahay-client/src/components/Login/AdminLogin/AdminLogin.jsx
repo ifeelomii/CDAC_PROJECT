@@ -15,9 +15,8 @@ const AdminLogin = () => {
     if (username === "" || password === "") {
       setErrorMessage("Please enter both username and password.");
     }*/
-    
-    if (username === 'omkar' && password === "omkar")
-    {
+
+    if (username === "omkar" && password === "omkar") {
       navigate(`/gramsevaks/allgramsevaks/${username}`);
     }
     /*

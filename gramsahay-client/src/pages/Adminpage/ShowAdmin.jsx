@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./GSpage.css";
-import GramsevakService from "../../services/GramsevakService";
+import "./Adminspage.css";
+import AdminService from "../../services/AdminService";
 
-const ShowGS = () => {
+const ShowAdmin = () => {
   const params = useParams();
   const [userdetails, setUserDetails] = useState({
     adminId: "",
@@ -15,8 +15,8 @@ const ShowGS = () => {
   });
 
   useEffect(() => {
-    console.log("id:" + params.uid);
-    GramsevakService.getGramsevakById(params.uid)
+    console.log("id:" + params.aid);
+    AdminService.getAdminById(params.aid)
       .then((result) => {
         console.log(result);
         setUserDetails({ ...result.data });
@@ -29,11 +29,11 @@ const ShowGS = () => {
     <div>
       <div className="card">
         <div className="info-card-body">
-          <h2 className="info-card-title">Gramsevak Information</h2>
+          <h2 className="info-card-title">Admin Information</h2>
           <div id="line"></div>
           <div id="info-card">
-            <h4>Gramsevak Id:- </h4>
-            <h4> {userdetails.gsId} </h4>
+            <h4>Admin Id:- </h4>
+            <h4> {userdetails.adminId} </h4>
           </div>
           <div id="info-card">
             <h4>First Name:- </h4>
@@ -51,18 +51,7 @@ const ShowGS = () => {
             <h4>Phone Number:- </h4>
             <h4> {userdetails.phoneNumber} </h4>
           </div>
-          <div id="info-card">
-            <h4>District:- </h4>
-            <h4> {userdetails.district} </h4>
-          </div>
-          <div id="info-card">
-            <h4>Village:- </h4>
-            <h4> {userdetails.village} </h4>
-          </div>
-          <div id="info-card">
-            <h4>Status:- </h4>
-            <h4> {userdetails.status ? "Available" : "Unavailable"} </h4>
-          </div>
+          
           <div id="info-seperator"></div>
         </div>
       </div>
@@ -70,4 +59,4 @@ const ShowGS = () => {
   );
 };
 
-export default ShowGS;
+export default ShowAdmin;

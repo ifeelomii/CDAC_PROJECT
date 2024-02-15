@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ComplaintService from "../../services/ComplaintService";
 import { Link, useParams } from "react-router-dom";
+import moment from "moment";
 import "./Complaintspage.css";
 
 const Allcomplaints = () => {
@@ -34,8 +35,7 @@ const Allcomplaints = () => {
     <>
       <div className="display-comp-wrapper">
         <br></br>
-        <h5>Welcome {params.username}</h5>
-        <Link to="/gramsevak/registergramsevak" id="action-comp-btn">
+        <Link to="/complaints/addcomplaint" id="action-comp-btn">
           <button
             type="button"
             name="btn"
@@ -43,14 +43,14 @@ const Allcomplaints = () => {
             className="btn btn-success"
           >
             {" "}
-            Add New Gramsevak
+            Add New Compaint
           </button>
         </Link>
         <table className="table table-striped">
           <thead>
             <tr>
               <th scope="col">Complaint Id</th>
-              {/* <th scope="col">User Id</th> */}
+              <th scope="col">User Id</th>
               <th scope="col">Category</th>
               <th scope="col">Description</th>
               <th scope="col">Posted At</th>
@@ -86,55 +86,86 @@ const Allcomplaints = () => {
               >
                 View
               </th>
+              <th
+                scope="col"
+                style={{
+                  textAlign: "center",
+                  width: "8px"
+                }}
+              >
+                Remarks
+              </th>
             </tr>
           </thead>
           <tbody>
             {complaintlist.map((ob) => (
-              <tr>
-                <td>{ob.complaintId}</td>
-                {/* <td>{ob.user_id}</td> */}
-                <td>{ob.category}</td>
-                <td>{ob.description}</td>
-                <td>{ob.postedAt}</td>
-                <td>{ob.district}</td>
-                <td>{ob.taluka}</td>
-                <td>{ob.village}</td>
-                <td>{ob.status}</td>
-                <td>{ob.remarks?ob.remarks:"none"}</td>
+              <tr key={ob.complaintId}>
+                <td>{ob.complaintId ? ob.complaintId : "null"}</td>
+                <td>{ob.userId ? ob.userId : "null"}</td>
+                <td>{ob.category ? ob.category : "null"}</td>
+                <td>{ob.description ? ob.description : "null"}</td>
+                <td>
+                  {ob.postedAt
+                    ? moment(ob.postedAt).format("DD/MM/YYYY HH:mm:ss")
+                    : "null"}
+                </td>
+                <td>{ob.district ? ob.district : "null"}</td>
+                <td>{ob.taluka ? ob.taluka : "null"}</td>
+                <td>{ob.village ? ob.village : "null"}</td>
+                <td>{ob.status ? ob.status : "null"}</td>
+                <td>{ob.remarks ? ob.remarks : "none"}</td>
                 <td>
                   <button
                     type="button"
                     name="btn"
                     id="delete"
-                    className="btn btn-danger"
+                    className="btn btn-danger rounded-pill"
                     onClick={() => {
-                      deleteComplaint(ob.userId);
+                      deleteComplaint(ob.complaintId);
                     }}
                   >
                     Delete
                   </button>
                 </td>
                 <td>
-                  <Link to={`/edit/${ob.userId}`} state={{ pdata: ob }}>
+                  <Link
+                    to={`/complaints/editcomplaint/${ob.complaintId}`}
+                    state={{ data: ob }}
+                  >
                     <button
                       type="button"
                       name="btn"
                       id="edit"
-                      className="btn btn-primary"
+                      className="btn btn-primary rounded-pill"
                     >
                       Edit
                     </button>
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/view/${ob.cid}`}>
+                  <Link to={`/complaints/viewcomplaint/${ob.complaintId}`}>
                     <button
                       type="button"
                       name="btn"
                       id="view"
-                      className="btn btn-info"
+                      className="btn btn-info rounded-pill"
                     >
                       View
+                    </button>
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to={`/complaints/addremark/${ob.complaintId}`}
+                    state={{ data: ob }}
+                  >
+                    <button
+                      type="button"
+                      name="btn"
+                      id="view"
+                      className="btn btn-secondary rounded-pill"
+                    >
+                      Add
                     </button>
                   </Link>
                 </td>

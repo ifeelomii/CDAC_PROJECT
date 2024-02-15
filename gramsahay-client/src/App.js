@@ -22,6 +22,14 @@ import AddGS from "./pages/GSpage/AddGS";
 import AddAdmin from "./pages/Adminpage/AddAdmin";
 import EditGS from "./pages/GSpage/EditGS";
 import ShowGS from "./pages/GSpage/ShowGS";
+import ShowAdmin from "./pages/Adminpage/ShowAdmin";
+import EditAdmin from "./pages/Adminpage/EditAdmin";
+import ShowComplaint from "./pages/Complaintspage/ShowComplaint";
+import AddComplaint from "./pages/Complaintspage/AddComplaint";
+import EditComplaint from "./pages/Complaintspage/EditComplaint";
+import AddRemarks from "./pages/Complaintspage/AddRemarks";
+import UserDashboard from "./pages/Userpage/UserDashboard";
+import GSDashboard from "./pages/GSpage/GSDashBoard";
 function App() {
   return (
     <>
@@ -44,6 +52,12 @@ function App() {
           <Route path="/login/user" element={<UserLogin />} />
 
           <Route
+            path="/users/dashboard/:username"
+            element={<UserDashboard />}
+          />
+
+          <Route path="/users/alluserdetails" element={<AllUsers />} />
+          <Route
             path="/users/alluserdetails/:username"
             element={<AllUsers />}
           />
@@ -59,14 +73,31 @@ function App() {
 
           <Route path="/gramsevak/viewgramsevak/:uid" element={<ShowGS />} />
 
+          <Route path="/gramsevaks/allgramsevaks" element={<AllGS />} />
           <Route
             path="/gramsevaks/allgramsevaks/:username"
             element={<AllGS />}
           />
+          <Route path="/gramsevaks/dashboard/:username" element={<GSDashboard />} />
 
           {/* COMPLAINT PATHS */}
           <Route path="/complaints" element={<ComplaintRegistration />} />
 
+          <Route
+            path="/complaints/viewcomplaint/:cid"
+            element={<ShowComplaint />}
+          />
+
+          <Route path="/complaints/addcomplaint" element={<AddComplaint />} />
+
+          <Route path="/complaints/addremark/:cid" element={<AddRemarks />} />
+
+          <Route
+            path="/complaints/editcomplaint/:id"
+            element={<EditComplaint />}
+          />
+
+          <Route path="/complaints/allcomplaints" element={<AllComplaints />} />
           <Route
             path="/complaints/allcomplaints/:username"
             element={<AllComplaints />}
@@ -77,9 +108,15 @@ function App() {
 
           <Route path="/admins/addadmin" element={<AddAdmin />} />
 
+          <Route path="/admins/alladmins" element={<AllAdmins />} />
+
           <Route path="/admins/alladmins/:username" element={<AllAdmins />} />
 
-          <Route path="/admins/dashboard" element={<AdminDashboard />} />
+          <Route path="/admins/viewadmin/:aid" element={<ShowAdmin />} />
+
+          <Route path="/admins/editadmin/:id" element={<EditAdmin />} />
+
+          <Route path="/admins/dashboard/:username" element={<AdminDashboard />} />
         </Routes>
       </div>
       <MainFooter />
