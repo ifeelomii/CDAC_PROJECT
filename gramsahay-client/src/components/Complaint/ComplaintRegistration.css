@@ -1,6 +1,7 @@
 #main-complaint-reg-div{
     display: grid;
     margin: auto;
+    min-height: 71.6vh;
 }
 #complaint-reg{
     text-align: center;

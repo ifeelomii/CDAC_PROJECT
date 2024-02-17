@@ -36,7 +36,7 @@ const AddRemarks = () => {
           status: "",
           remarks: ""
         });
-        // navigate(`/complaints/allcomplaints`);
+        navigate(`/gramsevaks/dashboard`);
       })
       .catch((err) => {
         console.log("error occured", err);

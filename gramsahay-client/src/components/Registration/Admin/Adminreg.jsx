@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Adminreg.css";
 import UserService from "../../../services/UserService";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AdminRegistrationForm = () => {
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     uname: "",
     pwd: "",
@@ -35,6 +38,10 @@ const AdminRegistrationForm = () => {
     console.log(formData);
   };
 
+  const goback = () => {
+    const nav = localStorage.getItem("adminusername");
+    navigate(`/admins/dashboard/${nav}`);
+  }
   return (
     <div id="main-admin-reg-div">
       <h2 id="admin-reg">Admin Registration</h2>
@@ -138,6 +145,10 @@ const AdminRegistrationForm = () => {
 
           <button type="reset" id="reset">
             Reset
+          </button>
+        
+          <button type="button" id="back" onClick={goback}>
+            Back
           </button>
         </div>
       </form>

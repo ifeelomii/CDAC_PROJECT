@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./Complaintspage.css";
 import moment from "moment";
 import ComplaintService from "../../services/ComplaintService";
 
 const EditComplaint = () => {
   const location = useLocation();
-
+  const params = useParams();
   const [formdetails, setformdetails] = useState({
     complaintId: "",
     userId:"",
     category: "",
     description: "",
-    postedAt:"",
+    postedAt: "",
+    forAdmin:"",
     district: "",
     taluka: "",
     village: "",
@@ -38,13 +39,14 @@ const EditComplaint = () => {
           category: "",
           description: "",
           postedAt: "",
+          forAdmin:"",
           district: "",
           taluka: "",
           village: "",
           status: "",
           remarks: ""
         });
-        navigate(`/complaints/allcomplaints`);
+        navigate(`/gramsevaks/dashboard/${params.username}`);
       })
       .catch((err) => {
         console.log("error occured", err);
@@ -138,6 +140,22 @@ const EditComplaint = () => {
               readOnly
             />
           </div>
+          <div className="form-group" id="input-group">
+            <label>For Admin:</label>
+            <input
+              type="text"
+              className="form-control col-md-12"
+              id="forAdmin"
+              name="forAdmin"
+              value={formdetails.forAdmin}
+              onChange={(event) => {
+                setformdetails({
+                  ...formdetails,
+                  forAdmin: event.target.value
+                });
+              }}
+            />
+          </div>
           <div className="form-group label" id="input-group">
             <label>District:</label>
             <input
@@ -198,7 +216,6 @@ const EditComplaint = () => {
               onChange={(event) => {
                 setformdetails({ ...formdetails, status: event.target.value });
               }}
-              readOnly
             />
           </div>
           <button

@@ -8,7 +8,7 @@ class ComplaintService {
     return axios.get(baseUrl + "complaints/" + cid);
   }
   addComplaint(complaint) {
-    return axios.post(baseUrl + "complaints/" + complaint.cid, complaint);
+    return axios.post(baseUrl + "complaints/" + complaint.userid, complaint);
   }
   getComplaintByStatus(status) {
     return axios.get(baseUrl + "complaints/status/" +status);
@@ -16,17 +16,8 @@ class ComplaintService {
   getComplaintCount(status) {
     return axios.get(baseUrl + "count/" +status);
   }
-  // getNewComplaintCount(status) {
-  //   return axios.get(baseUrl + "newcount/" +status);
-  // }
-  // getInProcessComplaintCount(status) {
-  //   return axios.get(baseUrl + "ipcount/" +status);
-  // }
-  // getCompletedComplaintCount(status) {
-  //   return axios.get(baseUrl + "compcount/" +status);
-  // }
   addRemarks(complaint) {
-    return axios.post(baseUrl + "complaints/" + complaint.cid, complaint);
+    return axios.post(baseUrl + "complaints/", complaint);
   }
   updateComplaint(complaint) {
     return axios.put(baseUrl + "complaints/" + complaint.cid, complaint);

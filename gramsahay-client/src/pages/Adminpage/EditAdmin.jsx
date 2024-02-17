@@ -36,7 +36,8 @@ const EditAdmin = () => {
           emailId: "",
           phoneNumber: ""
         });
-        navigate(`/admins/alladmins/${un}`);
+        const nav = localStorage.getItem("adminusername");
+        navigate(`/admins/dashboard/${nav}`);
       })
       .catch((err) => {
         console.log("error occured", err);

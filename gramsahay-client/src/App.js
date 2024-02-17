@@ -78,6 +78,7 @@ function App() {
             path="/gramsevaks/allgramsevaks/:username"
             element={<AllGS />}
           />
+          {/* <Route path="/gramsevaks/dashboard" element={<GSDashboard />} /> */}
           <Route path="/gramsevaks/dashboard/:username" element={<GSDashboard />} />
 
           {/* COMPLAINT PATHS */}

@@ -34,11 +34,6 @@ const Sidepanel = () => {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="sidepanel-nav-menu">
-                Contact Us
-              </Link>
-            </li>
-            <li>
               <Link to="/login" className="sidepanel-nav-menu">
                 Login
               </Link>
@@ -46,11 +41,6 @@ const Sidepanel = () => {
             <li>
               <Link to="/feedback" className="sidepanel-nav-menu">
                 Feedback
-              </Link>
-            </li>
-            <li>
-              <Link to="/complaint" className="sidepanel-nav-menu">
-                Complaint
               </Link>
             </li>
           </ul>

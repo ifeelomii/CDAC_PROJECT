@@ -11,7 +11,6 @@ import CompletedComplaints from "../Complaintspage/CompletedComplaints";
 
 const GSDashboard = () => {
   var status;
-  const params = useParams();
   const [gramsevakData, setGramsevakData] = useState({
     gsId: "",
     username: "",
@@ -35,7 +34,6 @@ const GSDashboard = () => {
   const [showCompleted, setShowCompleted] = useState(false);
 
   useEffect(() => {
-    console.log(params.username);
     fetchGramsevakData();
     fetchComplaints();
     console.log(gramsevakData);
@@ -43,7 +41,7 @@ const GSDashboard = () => {
 
   const fetchGramsevakData = async () => {
     try {
-      GramsevakService.getGramsevakByUsername(params.username)
+      GramsevakService.getGramsevakByUsername(localStorage.getItem("gsusername"))
         .then((result) => {
           console.log(result);
           setGramsevakData({ ...result.data });
@@ -141,10 +139,10 @@ const GSDashboard = () => {
           <>
             <div>
               <br />
-              <h5>Welcome {params.username}</h5>
+              <h5>Welcome {localStorage.getItem("gsusername")}</h5>
             </div>
             <div>
-              <h5>User id :- {gramsevakData.gsId}</h5>
+              <h5>Gramsevak Id :- {gramsevakData.gsId}</h5>
             </div>
             <div>
               <h5>
@@ -194,15 +192,6 @@ const GSDashboard = () => {
           >
             {showCompleted ? "Completed Complaints" : "Completed Complaints"}
           </button>
-          {/* <select
-            onChange={handleSelectChange}
-            className="btn btn-secondary rounded-pill"
-          >
-            <option value="">Filter By Status</option>
-            <option value="completed">Completed</option>
-            <option value="inprocess">In-Process</option>
-            <option value="new">New</option>
-          </select> */}
         </div>
         {showAllUsers && (
           <div>

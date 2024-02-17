@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import GramsevakService from "../../services/GramsevakService";
 import AllUsers from "../Userpage/AllUsers";
 import "./Adminspage.css";
 import ComplaintService from "../../services/ComplaintService";
@@ -8,14 +6,14 @@ import Allcomplaints from "../Complaintspage/Allcomplaints";
 import NewComplaints from "../Complaintspage/NewComplaints";
 import InProcessComplaints from "../Complaintspage/InProcessComplaints";
 import CompletedComplaints from "../Complaintspage/CompletedComplaints";
-import AdminRegistrationForm from "../../components/Registration/Admin/Adminreg";
 import AdminService from "../../services/AdminService";
+import AllGS from "../GSpage/AllGS";
+import AllAdmins from "./AllAdmins";
 
 const GSDashboard = () => {
   var newcomp;
   var ipcomp;
   var completedcomp;
-  const params = useParams();
 
   const [adminData, setAdminData] = useState({
     adminId: "",
@@ -43,23 +41,24 @@ const GSDashboard = () => {
   const [showNew, setShowNew] = useState(false);
   const [showInProcess, setShowInProcess] = useState(false);
   const [showCompleted, setShowCompleted] = useState(false);
+  const [showGS, setShowGS] = useState(false);
+  const [showAdmin, setShowAdmins] = useState(false);
 
   useEffect(() => {
-    console.log(params.username);
     fetchAdminData();
     fetchComplaints();
     fetchNew();
     fetchInProcess();
     fetchCompleted();
     console.log(adminData);
+    console.log("username", localStorage.getItem("adminusername"));
   }, []);
 
   // GET GS DATA
   const fetchAdminData = async () => {
     try {
-      AdminService.getAdminByUsername(params.username)
+      AdminService.getAdminByUsername(localStorage.getItem("adminusername"))
         .then((result) => {
-          //   console.log(result);
           setAdminData({ ...result.data });
         })
         .catch((err) => {
@@ -144,6 +143,8 @@ const GSDashboard = () => {
     setShowNew(false);
     setShowInProcess(false);
     setShowCompleted(false);
+    setShowGS(false);
+    setShowAdmins(false);
   };
   const toggleShowAllComplaints = () => {
     setShowAllUsers(false);
@@ -151,6 +152,8 @@ const GSDashboard = () => {
     setShowNew(false);
     setShowInProcess(false);
     setShowCompleted(false);
+    setShowGS(false);
+    setShowAdmins(false);
   };
   const toggleNewComplaints = () => {
     setShowAllUsers(false);
@@ -158,6 +161,8 @@ const GSDashboard = () => {
     setShowNew(!showNew);
     setShowInProcess(false);
     setShowCompleted(false);
+    setShowGS(false);
+    setShowAdmins(false);
     ComplaintService.getComplaintByStatus("new")
       .then((result) => {
         console.log(result.data);
@@ -174,6 +179,8 @@ const GSDashboard = () => {
     setShowNew(false);
     setShowInProcess(!showInProcess);
     setShowCompleted(false);
+    setShowGS(false);
+    setShowAdmins(false);
     ComplaintService.getComplaintByStatus("inprocess")
       .then((result) => {
         console.log(result.data);
@@ -189,6 +196,8 @@ const GSDashboard = () => {
     setShowNew(false);
     setShowInProcess(false);
     setShowCompleted(!showCompleted);
+    setShowGS(false);
+    setShowAdmins(false);
     ComplaintService.getComplaintByStatus("completed")
       .then((result) => {
         console.log(result.data);
@@ -197,6 +206,25 @@ const GSDashboard = () => {
       .catch((err) => {
         console.log("error occured", err);
       });
+  };
+
+  const toggleShowGS = () => {
+    setShowAllUsers(false);
+    setShowAllComplaints(false);
+    setShowNew(false);
+    setShowInProcess(false);
+    setShowCompleted(false);
+    setShowGS(!showGS);
+    setShowAdmins(false);
+  };
+  const toggleShowAdmin = () => {
+    setShowAllUsers(false);
+    setShowAllComplaints(false);
+    setShowNew(false);
+    setShowInProcess(false);
+    setShowCompleted(false);
+    setShowGS(false);
+    setShowAdmins(!showAdmin);
   };
 
   return (
@@ -209,15 +237,14 @@ const GSDashboard = () => {
           {adminData && (
             <>
               <div>
-                <h5>Welcome {params.username}</h5>
+                <h5>Welcome {localStorage.getItem("adminusername")}</h5>
               </div>
               <div>
                 <h5>User id :- {adminData.adminId}</h5>
               </div>
               <div>
                 <h5>
-                  Full Name:-{" "}
-                  {adminData.firstName + " " + adminData.lastName}
+                  Full Name:- {adminData.firstName + " " + adminData.lastName}
                 </h5>
               </div>
               <div>
@@ -275,15 +302,22 @@ const GSDashboard = () => {
           >
             {showCompleted ? "Completed Complaints" : "Completed Complaints"}
           </button>
-          {/* <select
-            onChange={handleSelectChange}
+        </div>
+        <div id="btn-group">
+          <button
+            onClick={toggleShowGS}
             className="btn btn-secondary rounded-pill"
+            id="show-users"
           >
-            <option value="">Filter By Status</option>
-            <option value="completed">Completed</option>
-            <option value="inprocess">In-Process</option>
-            <option value="new">New</option>
-          </select> */}
+            {showGS ? "Hide Gramsevaks" : "All Gramsevaks"}
+          </button>
+          <button
+            onClick={toggleShowAdmin}
+            className="btn btn-secondary rounded-pill"
+            id="show-users"
+          >
+            {showAdmin ? "Hide Admins" : "All Admins"}
+          </button>
         </div>
         {showAllUsers && (
           <div>
@@ -313,6 +347,18 @@ const GSDashboard = () => {
           <div>
             <h2>Completed Complaints</h2>
             <CompletedComplaints />
+          </div>
+        )}
+        {showGS && (
+          <div>
+            <h2>All Gramsevaks</h2>
+            <AllGS />
+          </div>
+        )}
+        {showAdmin && (
+          <div>
+            <h2>All Admins</h2>
+            <AllAdmins />
           </div>
         )}
       </div>

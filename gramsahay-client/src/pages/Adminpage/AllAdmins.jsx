@@ -5,9 +5,6 @@ import "./Adminspage.css";
 
 const AllAdmins = () => {
   const [adminlist, setAdminList] = useState([]);
-
-  const params = useParams();
-  // console.log(params.username)
   const fetchdata = () => {
     AdminService.getAllAdmins()
       .then((result) => {
@@ -34,7 +31,7 @@ const AllAdmins = () => {
     <>
       <div className="display-admin-wrapper">
         <br></br>
-        <h5>Welcome {params.username}</h5>
+        <h5>Welcome {localStorage.getItem("adminusername")}</h5>
         <Link to="/admins/addadmin" id="action-admin-btn">
           <button
             type="button"
@@ -52,7 +49,7 @@ const AllAdmins = () => {
               <th scope="col">Admin Id</th>
               <th scope="col">Full Name</th>
               <th scope="col">Username</th>
-              <th scope="col">Password</th>
+              {/* <th scope="col">Password</th> */}
               <th scope="col">Email Id</th>
               <th scope="col">Phone Number</th>
               <th
@@ -90,7 +87,7 @@ const AllAdmins = () => {
                 <td>{ob.adminId}</td>
                 <td>{ob.firstName + " " + ob.lastName}</td>
                 <td>{ob.username}</td>
-                <td>{ob.password}</td>
+                {/* <td>{ob.password}</td> */}
                 <td>{ob.emailId}</td>
                 <td>{ob.phoneNumber}</td>
                 <td>

@@ -2,7 +2,10 @@ import { useState } from "react";
 import "./ComplaintRegistration.css";
 import axios from "axios";
 import ComplaintService from "../../services/ComplaintService";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 const ComplaintRegistration = () => {
+  const navigate = useNavigate();
+  const params = useParams();
   const [formData, setFormData] = useState({
     userid: "",
     category: "",
@@ -13,8 +16,7 @@ const ComplaintRegistration = () => {
     state: "Maharashtra",
     district: "",
     taluka: "",
-    village: "",
-    remarks: ""
+    village: ""
   });
 
   const [error, setError] = useState("");
@@ -30,9 +32,10 @@ const ComplaintRegistration = () => {
     e.preventDefault();
     try {
       // Call API to register user
-      ComplaintService.addComplaint(formData);
+      ComplaintService.updateComplaint(formData);
       setSuccess(true);
       setError("");
+      navigate(`/gramsevaks/dashboard/${params.username}`);
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);
@@ -183,19 +186,7 @@ const ComplaintRegistration = () => {
             />
           </label>
         </div>
-        <div id="input-group">
-          <label>
-            Remarks:
-            <input
-              type="text"
-              name="remarks"
-              value={formData.remarks}
-              onChange={handleChange}
-              placeholder="Enter Your Address"
-              className="col-md-12"
-            />
-          </label>
-        </div>
+      
         <div id="last-line"></div>
 
         <div id="btn-group">

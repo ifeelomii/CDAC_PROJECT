@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./UserLogin.css";
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../../Footer/Footer";
-import { MainFooter } from "../../Footer/MainFooter";
 
 const UserLogin = () => {
   const [loginUsername, setLoginUsername] = useState("");
@@ -12,8 +10,9 @@ const UserLogin = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
-    if (loginUsername === "omkar" && loginPassword === "omkar") {
-      navigate(`/users/dashboard/${loginUsername}`);
+    if (loginUsername === "loganwright" && loginPassword === "loganwright") {
+      localStorage.setItem("username", loginUsername);
+      navigate(`/users/dashboard/${localStorage.getItem("username")}`);
     }
     // Here you can perform login authentication
     console.log("Login submitted with:", loginUsername, loginPassword);

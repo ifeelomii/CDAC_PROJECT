@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import GramsevakService from "../../services/GramsevakService";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./GSpage.css";
 
 const AllGS = () => {
   const [gslist, setGsList] = useState([]);
 
-  const params = useParams();
-  // console.log(params.username)
   const fetchdata = () => {
     GramsevakService.getAllGramsevaks()
       .then((result) => {
@@ -34,7 +32,7 @@ const AllGS = () => {
     <>
       <div className="display-gs-wrapper">
         <br></br>
-        <h5>Welcome {params.username}</h5>
+        <h5>Welcome {localStorage.getItem("gsusername")}</h5>
         <Link to="/gramsevakas/addgramsevak" id="action-gs-btn">
           <button
             type="button"

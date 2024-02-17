@@ -58,8 +58,8 @@ const Allcomplaints = () => {
               <th scope="col">Taluka</th>
               <th scope="col">Village</th>
               <th scope="col">Status</th>
-              <th scope="col">Remarks</th>
-              <th
+              {/* <th scope="col">Remarks</th> */}
+              {/* <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -67,8 +67,8 @@ const Allcomplaints = () => {
                 }}
               >
                 Delete
-              </th>
-              <th
+              </th> */}
+              {/* <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -76,7 +76,7 @@ const Allcomplaints = () => {
                 }}
               >
                 Edit
-              </th>
+              </th> */}
               <th
                 scope="col"
                 style={{
@@ -86,7 +86,7 @@ const Allcomplaints = () => {
               >
                 View
               </th>
-              <th
+              {/* <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -94,7 +94,7 @@ const Allcomplaints = () => {
                 }}
               >
                 Remarks
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -113,8 +113,8 @@ const Allcomplaints = () => {
                 <td>{ob.taluka ? ob.taluka : "null"}</td>
                 <td>{ob.village ? ob.village : "null"}</td>
                 <td>{ob.status ? ob.status : "null"}</td>
-                <td>{ob.remarks ? ob.remarks : "none"}</td>
-                <td>
+                {/* <td>{ob.remarks ? ob.remarks : "none"}</td> */}
+                {/* <td>
                   <button
                     type="button"
                     name="btn"
@@ -125,9 +125,9 @@ const Allcomplaints = () => {
                     }}
                   >
                     Delete
-                  </button>
-                </td>
-                <td>
+                  </button> 
+                </td>*/}
+                {/* <td>
                   <Link
                     to={`/complaints/editcomplaint/${ob.complaintId}`}
                     state={{ data: ob }}
@@ -141,7 +141,7 @@ const Allcomplaints = () => {
                       Edit
                     </button>
                   </Link>
-                </td>
+                </td> */}
                 <td>
                   <Link to={`/complaints/viewcomplaint/${ob.complaintId}`}>
                     <button
@@ -154,7 +154,7 @@ const Allcomplaints = () => {
                     </button>
                   </Link>
                 </td>
-                <td>
+                {/* <td>
                   <Link
                     to={`/complaints/addremark/${ob.complaintId}`}
                     state={{ data: ob }}
@@ -168,7 +168,7 @@ const Allcomplaints = () => {
                       Add
                     </button>
                   </Link>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
