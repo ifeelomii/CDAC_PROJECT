@@ -1,49 +1,59 @@
 // AdminLogin.js
 import React, { useState } from "react";
 import "./AdminLogin.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LoginService from "../../../services/LoginService";
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [formdata, setFormdata] = useState({ username: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-
-    /* PREVENTS EMPTY USERNAME OR PASSWORD
-    if (username === "" || password === "") {
-      setErrorMessage("Please enter both username and password.");
-    }*/
-
-    if (username === "Omkarware003" && password === "omkar") {
-      localStorage.setItem("adminusername", username);
-      navigate(`/admins/dashboard/${username}`);
+    try {
+      LoginService.adminLogin(formdata)
+        .then((result) => {
+          setErrorMessage("");
+          console.log("Login successful");
+          localStorage.setItem("valid-admin", true);
+          localStorage.setItem("username", formdata.username);
+          setErrorMessage("");
+          navigate(`/admins/dashboard/${formdata.username}`);
+        })
+        .catch((err) => {
+          console.log("error occured", err);
+        });
+    } catch (error) {
+      setErrorMessage("Failed to Login. Please try again.");
+      console.error("Error Logging in:", error);
     }
-    
-    // Here you can perform actual login logic
-    console.log("Login successful");
-    // Reset the form after successful login
-    setUsername("");
-    setPassword("");
-    setErrorMessage("");
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormdata({ ...formdata, [name]: value });
   };
 
   return (
     <>
       <div className="admin-login-container">
         <h2>Admin Login</h2>
-        {/* {errorMessage && (
+        {errorMessage && (
           <p className="admin-login-error-message">{errorMessage}</p>
-        )} */}
+        )}
         <form onSubmit={handleLogin}>
           <div id="admin-login-form">
             <div className="form-group">
               <label>Username:</label>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                id="username"
+                value={formdata.username}
+                onChange={handleChange}
                 className="form-control"
               />
             </div>
@@ -51,8 +61,10 @@ const AdminLogin = () => {
               <label>Password:</label>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                id="password"
+                value={formdata.password}
+                onChange={handleChange}
                 className="form-control"
               />
             </div>

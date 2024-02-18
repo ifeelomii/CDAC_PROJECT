@@ -59,7 +59,7 @@ const NewComplaints = () => {
               <th scope="col">Village</th>
               <th scope="col">Status</th>
               <th scope="col">Remarks</th>
-              <th
+              {/* <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -67,7 +67,7 @@ const NewComplaints = () => {
                 }}
               >
                 Delete
-              </th>
+              </th> */}
               <th
                 scope="col"
                 style={{
@@ -86,7 +86,7 @@ const NewComplaints = () => {
               >
                 View
               </th>
-              <th
+              {/* <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -94,7 +94,7 @@ const NewComplaints = () => {
                 }}
               >
                 Remarks
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -114,7 +114,7 @@ const NewComplaints = () => {
                 <td>{ob.village ? ob.village : "null"}</td>
                 <td>{ob.status ? ob.status : "null"}</td>
                 <td>{ob.remarks ? ob.remarks : "none"}</td>
-                <td>
+                {/* <td>
                   <button
                     type="button"
                     name="btn"
@@ -126,7 +126,7 @@ const NewComplaints = () => {
                   >
                     Delete
                   </button>
-                </td>
+                </td> */}
                 <td>
                   <Link
                     to={`/complaints/editcomplaint/${ob.complaintId}`}
@@ -154,7 +154,7 @@ const NewComplaints = () => {
                     </button>
                   </Link>
                 </td>
-                <td>
+                {/* <td>
                   <Link
                     to={`/complaints/addremark/${ob.complaintId}`}
                     state={{ data: ob }}
@@ -168,7 +168,7 @@ const NewComplaints = () => {
                       Add
                     </button>
                   </Link>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

@@ -9,11 +9,15 @@ import CompletedComplaints from "../Complaintspage/CompletedComplaints";
 import AdminService from "../../services/AdminService";
 import AllGS from "../GSpage/AllGS";
 import AllAdmins from "./AllAdmins";
+import AllFeedbacks from "../Feedbacks/AllFeedbacks";
+import { useNavigate } from "react-router-dom";
 
 const GSDashboard = () => {
   var newcomp;
   var ipcomp;
   var completedcomp;
+
+  const navigate = useNavigate();
 
   const [adminData, setAdminData] = useState({
     adminId: "",
@@ -43,21 +47,27 @@ const GSDashboard = () => {
   const [showCompleted, setShowCompleted] = useState(false);
   const [showGS, setShowGS] = useState(false);
   const [showAdmin, setShowAdmins] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
 
   useEffect(() => {
-    fetchAdminData();
-    fetchComplaints();
-    fetchNew();
-    fetchInProcess();
-    fetchCompleted();
-    console.log(adminData);
-    console.log("username", localStorage.getItem("adminusername"));
+    if (localStorage.getItem("valid-admin")) {
+      fetchAdminData();
+      fetchComplaints();
+      fetchNew();
+      fetchInProcess();
+      fetchCompleted();
+      // console.log(adminData);
+      // console.log("username", localStorage.getItem("username"));
+    }
+    else {
+      navigate("/login/admin");
+    }
   }, []);
 
   // GET GS DATA
   const fetchAdminData = async () => {
     try {
-      AdminService.getAdminByUsername(localStorage.getItem("adminusername"))
+      AdminService.getAdminByUsername(localStorage.getItem("username"))
         .then((result) => {
           setAdminData({ ...result.data });
         })
@@ -145,6 +155,7 @@ const GSDashboard = () => {
     setShowCompleted(false);
     setShowGS(false);
     setShowAdmins(false);
+    setShowFeedback(false);
   };
   const toggleShowAllComplaints = () => {
     setShowAllUsers(false);
@@ -154,6 +165,7 @@ const GSDashboard = () => {
     setShowCompleted(false);
     setShowGS(false);
     setShowAdmins(false);
+    setShowFeedback(false);
   };
   const toggleNewComplaints = () => {
     setShowAllUsers(false);
@@ -163,6 +175,7 @@ const GSDashboard = () => {
     setShowCompleted(false);
     setShowGS(false);
     setShowAdmins(false);
+    setShowFeedback(false);
     ComplaintService.getComplaintByStatus("new")
       .then((result) => {
         console.log(result.data);
@@ -181,6 +194,7 @@ const GSDashboard = () => {
     setShowCompleted(false);
     setShowGS(false);
     setShowAdmins(false);
+    setShowFeedback(false);
     ComplaintService.getComplaintByStatus("inprocess")
       .then((result) => {
         console.log(result.data);
@@ -198,6 +212,7 @@ const GSDashboard = () => {
     setShowCompleted(!showCompleted);
     setShowGS(false);
     setShowAdmins(false);
+    setShowFeedback(false);
     ComplaintService.getComplaintByStatus("completed")
       .then((result) => {
         console.log(result.data);
@@ -216,6 +231,7 @@ const GSDashboard = () => {
     setShowCompleted(false);
     setShowGS(!showGS);
     setShowAdmins(false);
+    setShowFeedback(false);
   };
   const toggleShowAdmin = () => {
     setShowAllUsers(false);
@@ -224,8 +240,22 @@ const GSDashboard = () => {
     setShowInProcess(false);
     setShowCompleted(false);
     setShowGS(false);
+    setShowFeedback(false);
     setShowAdmins(!showAdmin);
   };
+  const toggleShowFeedback = () => {
+    setShowAllUsers(false);
+    setShowAllComplaints(false);
+    setShowNew(false);
+    setShowInProcess(false);
+    setShowCompleted(false);
+    setShowGS(false);
+    setShowFeedback(false);
+    setShowAdmins(false);
+    setShowFeedback(!showFeedback);
+  };
+
+  
 
   return (
     <>
@@ -318,6 +348,13 @@ const GSDashboard = () => {
           >
             {showAdmin ? "Hide Admins" : "All Admins"}
           </button>
+          <button
+            onClick={toggleShowFeedback}
+            className="btn btn-secondary rounded-pill"
+            id="show-users"
+          >
+            {showFeedback ? "Hide Feedbacks" : "All Feedbacks"}
+          </button>
         </div>
         {showAllUsers && (
           <div>
@@ -359,6 +396,12 @@ const GSDashboard = () => {
           <div>
             <h2>All Admins</h2>
             <AllAdmins />
+          </div>
+        )}
+        {showFeedback && (
+          <div>
+            <h2>All Feedbacks</h2>
+            <AllFeedbacks />
           </div>
         )}
       </div>

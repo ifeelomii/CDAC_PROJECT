@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import GramsevakService from "../../services/GramsevakService";
 import AllUsers from "../Userpage/AllUsers";
 import "./GSpage.css";
@@ -10,7 +10,7 @@ import InProcessComplaints from "../Complaintspage/InProcessComplaints";
 import CompletedComplaints from "../Complaintspage/CompletedComplaints";
 
 const GSDashboard = () => {
-  var status;
+  const navigate = useNavigate();
   const [gramsevakData, setGramsevakData] = useState({
     gsId: "",
     username: "",
@@ -34,14 +34,18 @@ const GSDashboard = () => {
   const [showCompleted, setShowCompleted] = useState(false);
 
   useEffect(() => {
-    fetchGramsevakData();
-    fetchComplaints();
-    console.log(gramsevakData);
+    if (localStorage.getItem("valid-gs")) {
+      fetchGramsevakData();
+      fetchComplaints();
+      console.log(gramsevakData);
+    } else {
+      navigate("/login/admin");
+    }
   }, []);
 
   const fetchGramsevakData = async () => {
     try {
-      GramsevakService.getGramsevakByUsername(localStorage.getItem("gsusername"))
+      GramsevakService.getGramsevakByUsername(localStorage.getItem("username"))
         .then((result) => {
           console.log(result);
           setGramsevakData({ ...result.data });
@@ -113,19 +117,19 @@ const GSDashboard = () => {
       });
   };
   const toggleCompletedComplaints = () => {
-    setShowAllUsers(false);
-    setShowAllComplaints(false);
-    setShowNew(false);
-    setShowInProcess(false);
-    setShowCompleted(!showCompleted);
-    ComplaintService.getComplaintByStatus("completed")
-      .then((result) => {
-        console.log(result.data);
-        setComplaints([...result.data]);
-      })
-      .catch((err) => {
-        console.log("error occured", err);
-      });
+      setShowAllUsers(false);
+      setShowAllComplaints(false);
+      setShowNew(false);
+      setShowInProcess(false);
+      setShowCompleted(!showCompleted);
+      ComplaintService.getComplaintByStatus("completed")
+        .then((result) => {
+          console.log(result.data);
+          setComplaints([...result.data]);
+        })
+        .catch((err) => {
+          console.log("error occured", err);
+        });
   };
 
   return (
@@ -133,13 +137,12 @@ const GSDashboard = () => {
       <div id="gs-dashboard-main-container">
         <h1>Gramsevak Dashboard</h1>
         <div id="line"></div>
-
+        <div id="gs-info">
         {/* Display Gramsevak data */}
         {gramsevakData && (
           <>
             <div>
-              <br />
-              <h5>Welcome {localStorage.getItem("gsusername")}</h5>
+              <h5>Welcome {localStorage.getItem("username")}</h5>
             </div>
             <div>
               <h5>Gramsevak Id :- {gramsevakData.gsId}</h5>
@@ -154,8 +157,8 @@ const GSDashboard = () => {
             </div>
             <hr />
           </>
-        )}
-
+          )}
+          </div>
         <div id="btn-group">
           <button
             onClick={toggleShowAllUsers}
@@ -176,21 +179,21 @@ const GSDashboard = () => {
             className="btn btn-secondary rounded-pill"
             id="show-users"
           >
-            {showNew ? "New Complaints" : "New Complaints"}
+            {showNew ? "Hide New Complaints" : "Show New Complaints"}
           </button>
           <button
             onClick={toggleInProcessComplaints}
             className="btn btn-secondary rounded-pill"
             id="show-users"
           >
-            {showInProcess ? "In-Process Complaints" : "In-Process Complaints"}
+            {showInProcess ? "Hide In-Process Complaints" : "Show In-Process Complaints"}
           </button>
           <button
             onClick={toggleCompletedComplaints}
             className="btn btn-secondary rounded-pill"
             id="show-users"
           >
-            {showCompleted ? "Completed Complaints" : "Completed Complaints"}
+            {showCompleted ? "Hide Completed Complaints" : "Show Completed Complaints"}
           </button>
         </div>
         {showAllUsers && (

@@ -68,7 +68,7 @@ const Allcomplaints = () => {
               >
                 Delete
               </th> */}
-              {/* <th
+              <th
                 scope="col"
                 style={{
                   textAlign: "center",
@@ -76,7 +76,7 @@ const Allcomplaints = () => {
                 }}
               >
                 Edit
-              </th> */}
+              </th>
               <th
                 scope="col"
                 style={{
@@ -127,7 +127,7 @@ const Allcomplaints = () => {
                     Delete
                   </button> 
                 </td>*/}
-                {/* <td>
+                <td>
                   <Link
                     to={`/complaints/editcomplaint/${ob.complaintId}`}
                     state={{ data: ob }}
@@ -141,7 +141,7 @@ const Allcomplaints = () => {
                       Edit
                     </button>
                   </Link>
-                </td> */}
+                </td>
                 <td>
                   <Link to={`/complaints/viewcomplaint/${ob.complaintId}`}>
                     <button

@@ -51,12 +51,27 @@ tbody > tr > td{
     max-width: 500px;
 }
 
+#user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+}
+#user-info p{
+    font-size: 1.5rem;
+}
+
 /* CSS FOR EditUser.jsx */
 
 .outer-edit-user-container{
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+#main-container{
+    min-height: 70vh;
 }
 
 .inner-edit-user-container{

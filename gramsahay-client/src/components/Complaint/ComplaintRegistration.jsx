@@ -7,7 +7,7 @@ const ComplaintRegistration = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [formData, setFormData] = useState({
-    userid: "",
+    userid: `${params.id}`,
     category: "",
     description: "",
     forGS: "1", //for GS or not
@@ -31,11 +31,10 @@ const ComplaintRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call API to register user
-      ComplaintService.updateComplaint(formData);
+      ComplaintService.addComplaint(formData);
       setSuccess(true);
       setError("");
-      navigate(`/gramsevaks/dashboard/${params.username}`);
+      navigate(`/users/dashboard/${params.username}`);
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);

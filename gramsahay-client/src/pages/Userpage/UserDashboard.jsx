@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import UserService from "../../services/UserService";
 import ComplaintService from "../../services/ComplaintService";
 import Allcomplaints from "../Complaintspage/Allcomplaints";
 import moment from "moment";
 
 const UserDashboard = () => {
-
-  var comp = [];
+  const params = useParams();
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     userId: "",
     firstName: "",
@@ -15,76 +15,64 @@ const UserDashboard = () => {
     emailId: "",
     dob: "",
     phoneNumber: "",
-    lsComp:""
+    lsComp: ""
   });
   const [complaint, setComplaints] = useState([]);
-  // const [complaint, setComplaints] = useState({
-  //   complaintId: "",
-  //   postedAt: "",
-  //   category: "",
-  //   description: "",
-  //   forGS: "",
-  //   forAdmin: "",
-  //   status: "",
-  //   state: "",
-  //   district: "",
-  //   taluka: "",
-  //   village: "",
-  //   remarks:"",
-  // });
 
-  var uid;
   useEffect(() => {
-    fetchUserInfo();
-    // fetchUserComplaints(userInfo.userId);
-    // comp = [...complaint];
-    console.log(complaint)
-    // console.log(localStorage.getItem("username"));
+    if (localStorage.getItem("valid-user")) {
+      fetchUserInfo();
+      console.log(complaint);
+    }
+    else {
+      navigate("/login/user");
+    }
   }, []);
 
   const fetchUserInfo = () => {
     try {
-     UserService.getUserByUsername(localStorage.getItem("username"))
-       .then((result) => {
-        //  console.log(result.data.lsComp);
-         setUserInfo({ ...result.data });
-         setComplaints([...result.data.lsComp] );
-       })
-       .catch((err) => {
-         console.log("error occured", err);
-       });
+      UserService.getUserByUsername(localStorage.getItem("username"))
+        .then((result) => {
+          setUserInfo({ ...result.data });
+          setComplaints([...result.data.lsComp]);
+        })
+        .catch((err) => {
+          console.log("error occured", err);
+        });
     } catch (error) {
       console.error("Error fetching user information:", error);
     }
   };
 
-
   const deleteComplaint = (cid) => {
     ComplaintService.deleteComplaint(cid)
       .then((result) => {
-        // console.log("deleted");
+        console.log("deleted");
+        navigate(`/users/dashboard/${params.username}`);
       })
       .catch((err) => {
-        console.log("error"+err)
+        console.log("error" + err);
       });
   };
 
   return (
-    <div>
+    <div id="main-container">
       <h1>User Dashboard</h1>
-      {userInfo && (
-        <div id="user-info">
-          <h2>User Information</h2>
-          <p>Username: {userInfo.username}</p>
-          <p>User ID: {userInfo.userId}</p>
-          <p>First Name: {userInfo.firstName}</p>
-          <p>Last Name: {userInfo.lastName}</p>
-        </div>
-      )}
+      <div id="line"></div>
+      <div>
+        {userInfo && (
+          <div id="user-info">
+            <p>Username: {userInfo.username}</p>
+            <p>User ID: {userInfo.userId}</p>
+            <p>First Name: {userInfo.firstName}</p>
+            <p>Last Name: {userInfo.lastName}</p>
+          </div>
+        )}
+      </div>
       <div>
         {/* <Allcomplaints/> */}
         {/* {/* <h2>User Complaints</h2> */}
-        <Link to="/complaints/addcomplaint" id="action-comp-btn">
+        <Link to={`/complaints/addcomplaint/${userInfo.userId}`} id="action-comp-btn">
           <button
             type="button"
             name="btn"
@@ -94,7 +82,7 @@ const UserDashboard = () => {
             {" "}
             Add New Compaint
           </button>
-          </Link>
+        </Link>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -190,10 +178,9 @@ const UserDashboard = () => {
                     </button>
                   </Link>
                 </td>
-            
               </tr>
             ))}
-          </tbody> 
+          </tbody>
         </table>
       </div>
     </div>
