@@ -24,6 +24,7 @@ const AdminLogin = () => {
         })
         .catch((err) => {
           console.log("error occured", err);
+          setErrorMessage("Invalid login credentials.");
         });
     } catch (error) {
       setErrorMessage("Failed to Login. Please try again.");

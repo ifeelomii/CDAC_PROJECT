@@ -76,7 +76,7 @@ const UserLogin = () => {
         </form>
         <div>
           Not a user?{" "}
-          <Link to="/user/registeruser" id="user-register">
+          <Link to="/users/adduser" id="user-register">
             Register Now !
           </Link>
         </div>

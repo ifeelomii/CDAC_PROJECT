@@ -39,7 +39,7 @@ const GSDashboard = () => {
       fetchComplaints();
       console.log(gramsevakData);
     } else {
-      navigate("/login/admin");
+      navigate("/login/gramsevak");
     }
   }, []);
 
@@ -117,48 +117,62 @@ const GSDashboard = () => {
       });
   };
   const toggleCompletedComplaints = () => {
-      setShowAllUsers(false);
-      setShowAllComplaints(false);
-      setShowNew(false);
-      setShowInProcess(false);
-      setShowCompleted(!showCompleted);
-      ComplaintService.getComplaintByStatus("completed")
-        .then((result) => {
-          console.log(result.data);
-          setComplaints([...result.data]);
-        })
-        .catch((err) => {
-          console.log("error occured", err);
-        });
+    setShowAllUsers(false);
+    setShowAllComplaints(false);
+    setShowNew(false);
+    setShowInProcess(false);
+    setShowCompleted(!showCompleted);
+    ComplaintService.getComplaintByStatus("completed")
+      .then((result) => {
+        console.log(result.data);
+        setComplaints([...result.data]);
+      })
+      .catch((err) => {
+        console.log("error occured", err);
+      });
+  };
+
+  const handelLogout = () => {
+    window.location.reload(false);
   };
 
   return (
     <>
       <div id="gs-dashboard-main-container">
-        <h1>Gramsevak Dashboard</h1>
+        <div id="logout">
+          <h1>Gramsevak Dashboard</h1>
+          <button
+            className="btn btn-danger rounded-pill"
+            onClick={handelLogout}
+          >
+            Logout
+          </button>
+        </div>
         <div id="line"></div>
         <div id="gs-info">
-        {/* Display Gramsevak data */}
-        {gramsevakData && (
-          <>
-            <div>
-              <h5>Welcome {localStorage.getItem("username")}</h5>
-            </div>
-            <div>
-              <h5>Gramsevak Id :- {gramsevakData.gsId}</h5>
-            </div>
-            <div>
-              <h5>
-                Name:- {gramsevakData.firstName + " " + gramsevakData.lastName}
-              </h5>
-            </div>
-            <div>
-              <h5>Status:- {gramsevakData.status ? "Active" : "Inactive"}</h5>
-            </div>
-            <hr />
-          </>
+          {/* Display Gramsevak data */}
+          {gramsevakData && (
+            <>
+              <div>
+                <h5>Welcome {localStorage.getItem("username")}</h5>
+              </div>
+              <div>
+                <h5>Gramsevak Id :- {gramsevakData.gsId}</h5>
+              </div>
+              <div>
+                <h5>
+                  Name:-{" "}
+                  {gramsevakData.firstName + " " + gramsevakData.lastName}
+                </h5>
+              </div>
+              <div>
+                <h5>Status:- {gramsevakData.status ? "Active" : "Inactive"}</h5>
+              </div>
+              <hr />
+            </>
           )}
-          </div>
+        </div>
+
         <div id="btn-group">
           <button
             onClick={toggleShowAllUsers}
@@ -186,14 +200,18 @@ const GSDashboard = () => {
             className="btn btn-secondary rounded-pill"
             id="show-users"
           >
-            {showInProcess ? "Hide In-Process Complaints" : "Show In-Process Complaints"}
+            {showInProcess
+              ? "Hide In-Process Complaints"
+              : "Show In-Process Complaints"}
           </button>
           <button
             onClick={toggleCompletedComplaints}
             className="btn btn-secondary rounded-pill"
             id="show-users"
           >
-            {showCompleted ? "Hide Completed Complaints" : "Show Completed Complaints"}
+            {showCompleted
+              ? "Hide Completed Complaints"
+              : "Show Completed Complaints"}
           </button>
         </div>
         {showAllUsers && (

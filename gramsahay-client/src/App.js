@@ -34,8 +34,8 @@ import ShowFeedback from "./pages/Feedbacks/ShowFeedback";
 import { useEffect } from "react";
 function App() {
   useEffect(() => {
-    localStorage.removeItem("valid-admin");
     localStorage.removeItem("valid-gs");
+    localStorage.removeItem("valid-admin");
     localStorage.removeItem("valid-user");
   },[])
   return (

@@ -27,7 +27,15 @@ const FeedbackForm = () => {
       FeedbackService.addFeedback(formData)
       setSuccess(true);
       setError("");
-      navigate("/feedback")
+      setFormData({
+        fId: "",
+        firstName: "",
+        lastName: "",
+        emailId: "",
+        subject: "",
+        yourMessage: ""
+      });
+      navigate("/")
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);

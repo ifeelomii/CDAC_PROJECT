@@ -35,7 +35,7 @@ const Allcomplaints = () => {
     <>
       <div className="display-comp-wrapper">
         <br></br>
-        <Link to="/complaints/addcomplaint" id="action-comp-btn">
+        <Link to={`/complaints/addcomplaint/${complaintlist.userId}`} id="action-comp-btn">
           <button
             type="button"
             name="btn"

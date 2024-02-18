@@ -5,13 +5,13 @@ import UserService from "../../../services/UserService";
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
-    uname: "",
-    pwd: "",
-    fname: "",
-    lname: "",
-    email: "",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
     dob: "",
-    phone_number: "",
+    phoneNumber: "",
     state: "",
     district: "",
     taluka: "",
@@ -69,8 +69,8 @@ const UserRegistrationForm = () => {
             Username:
             <input
               type="text"
-              name="uname"
-              value={formData.uname}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               placeholder="Select A User Name"
               className="col-md-12"
@@ -81,8 +81,8 @@ const UserRegistrationForm = () => {
             Password:
             <input
               type="password"
-              name="pwd"
-              value={formData.pwd}
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               placeholder="Enter Password"
               className="col-md-12"
@@ -93,8 +93,8 @@ const UserRegistrationForm = () => {
             First Name:
             <input
               type="text"
-              name="fname"
-              value={formData.first_name}
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               placeholder="Enter Your First Name"
               className="col-md-12"
@@ -105,8 +105,8 @@ const UserRegistrationForm = () => {
             Last Name:
             <input
               type="text"
-              name="lname"
-              value={formData.last_name}
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               placeholder="Enter Your Last Name"
               className="col-md-12"
@@ -119,8 +119,8 @@ const UserRegistrationForm = () => {
             Email Address:
             <input
               type="email"
-              name="email"
-              value={formData.email_id}
+              name="emailId"
+              value={formData.emailId}
               onChange={handleChange}
               placeholder="Enter Your Email Id"
               className="col-md-12"
@@ -143,8 +143,8 @@ const UserRegistrationForm = () => {
             Phone Number:
             <input
               type="number"
-              name="phone_number"
-              value={formData.phone_number}
+              name="phoneNumber"
+              value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="Enter Your Number"
               className="col-md-12"

@@ -55,9 +55,18 @@ const UserDashboard = () => {
       });
   };
 
+  const handelLogout = () => {
+    window.location.reload(false);
+  };
+
   return (
     <div id="main-container">
-      <h1>User Dashboard</h1>
+      <div id="logout">
+        <h1>User Dashboard</h1>
+        <button className="btn btn-danger rounded-pill" onClick={handelLogout}>
+          Logout
+        </button>
+      </div>
       <div id="line"></div>
       <div>
         {userInfo && (
@@ -72,7 +81,10 @@ const UserDashboard = () => {
       <div>
         {/* <Allcomplaints/> */}
         {/* {/* <h2>User Complaints</h2> */}
-        <Link to={`/complaints/addcomplaint/${userInfo.userId}`} id="action-comp-btn">
+        <Link
+          to={`/complaints/addcomplaint/${userInfo.userId}`}
+          id="action-comp-btn"
+        >
           <button
             type="button"
             name="btn"

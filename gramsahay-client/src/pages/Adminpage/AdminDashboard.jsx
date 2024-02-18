@@ -56,11 +56,9 @@ const GSDashboard = () => {
       fetchNew();
       fetchInProcess();
       fetchCompleted();
-      // console.log(adminData);
-      // console.log("username", localStorage.getItem("username"));
     }
     else {
-      navigate("/login/admin");
+      navigate("/login");
     }
   }, []);
 
@@ -255,19 +253,28 @@ const GSDashboard = () => {
     setShowFeedback(!showFeedback);
   };
 
+  const handelLogout = () => {
+    window.location.reload(false);
+  }
   
-
   return (
     <>
       <div id="gs-dashboard-main-container">
-        <h1>Admin Dashboard</h1>
+        <div id="logout">
+          <h1>Admin Dashboard</h1>
+          <button
+            className="btn btn-danger rounded-pill"
+            onClick={handelLogout}
+          >
+            Logout
+          </button>
+        </div>
         <div id="line"></div>
-
         <div id="admin-info">
           {adminData && (
             <>
               <div>
-                <h5>Welcome {localStorage.getItem("adminusername")}</h5>
+                <h5>Welcome {localStorage.getItem("username")}</h5>
               </div>
               <div>
                 <h5>User id :- {adminData.adminId}</h5>
@@ -300,35 +307,35 @@ const GSDashboard = () => {
           <button
             onClick={toggleShowAllUsers}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showAllUsers ? "Hide All Users" : "Show All Users"}
           </button>
           <button
             onClick={toggleShowAllComplaints}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showAllComplaints ? "Hide Complaints" : "Show Complaints"}
           </button>
           <button
             onClick={toggleNewComplaints}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showNew ? "New Complaints" : "New Complaints"}
           </button>
           <button
             onClick={toggleInProcessComplaints}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showInProcess ? "In-Process Complaints" : "In-Process Complaints"}
           </button>
           <button
             onClick={toggleCompletedComplaints}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showCompleted ? "Completed Complaints" : "Completed Complaints"}
           </button>
@@ -337,21 +344,21 @@ const GSDashboard = () => {
           <button
             onClick={toggleShowGS}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showGS ? "Hide Gramsevaks" : "All Gramsevaks"}
           </button>
           <button
             onClick={toggleShowAdmin}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showAdmin ? "Hide Admins" : "All Admins"}
           </button>
           <button
             onClick={toggleShowFeedback}
             className="btn btn-secondary rounded-pill"
-            id="show-users"
+            id="show"
           >
             {showFeedback ? "Hide Feedbacks" : "All Feedbacks"}
           </button>
