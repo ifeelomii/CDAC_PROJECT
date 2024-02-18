@@ -1,0 +1,84 @@
+Software Requirement Specification (SRS) for Online Grievance Redressal Portal Project
+
+1. Introduction:
+1.1 Purpose:
+
+The purpose of this document is to outline the software requirements for the development of an Online Grievance Redressal Portal, specifying the technologies for
+both the front-end and back-end components.
+1.2 Scope:
+
+The online portal will be a web-based application developed with HTML5, CSS3, JS, BootStrap 5 for the front-end, and Java with SpringBoot, Hibernate, JPA for the 
+back-end, and MySQL as the database.
+2. Functional Requirements:
+
+2.1 User Module (Front-end):
+
+User Registration and Authentication:
+
+Users should be able to register and log in securely using HTML5 forms and ReactJS components.
+Grievance Submission:
+
+A user-friendly form using HTML5 and ReactJS for submitting grievances with attachment support.
+Real-time Tracking:
+
+ReactJS components to provide real-time tracking of grievance status with updates and notifications.
+User Profile Management:
+
+ReactJS forms for users to manage their profiles.
+2.2 Administration Module (Back-end):
+
+Dashboard:
+A SpringBoot service to provide administrators with a dashboard for an overview of the grievance resolution process.
+Grievance Categorization and Prioritization:
+Java and SpringBoot functions for categorizing and prioritizing grievances based on severity and nature.
+Communication Hub:
+Implement an integrated messaging system using SpringBoot for communication between citizens and authorities.
+Data Analytics and Reporting:
+Develop Java-based tools for administrators to analyze trends, monitor performance, and generate reports.
+User Management:
+Implement Java and SpringBoot functions for administrative control over user accounts.
+2.3 Security:
+
+Encryption:
+Utilize ReactJS and SpringBoot to implement encryption protocols for secure data transmission and storage.
+Access Controls:
+Implement role-based access controls using Spring Security to restrict unauthorized access.
+Data Backup and Recovery:
+Develop Java functions to perform regular data backup and implement a recovery mechanism.
+3. Non-functional Requirements:
+
+3.1 Performance:
+
+The portal should handle a high volume of concurrent users without significant performance degradation, utilizing ReactJS and SpringBoot optimizations.
+3.2 Scalability:
+
+Design the system architecture to be scalable using ReactJS and SpringBoot capabilities.
+3.3 Usability:
+
+Ensure a user-friendly interface using HTML5, CSS3, BootStrap 5, and ReactJS, with considerations for accessibility.
+3.4 Reliability:
+
+Develop a reliable system using ReactJS and SpringBoot with minimal downtime for maintenance and updates.
+3.5 Compatibility:
+
+Ensure compatibility with major web browsers and devices using HTML5, CSS3, BootStrap 5, and ReactJS.
+3.6 Compliance:
+
+Ensure compliance with data protection laws and regulations using secure back-end technologies.
+4. Technical Requirements:
+
+Develop the front-end using HTML5, CSS3, BootStrap 5, and ReactJS.
+Implement the back-end using Java, SpringBoot, Hibernate, JPA, and connect to a MySQL database.
+5. Constraints:
+
+Limited budget for development and maintenance.
+Integration challenges with existing government databases and systems.
+Compliance with existing legal and regulatory frameworks.
+6. Assumptions and Dependencies:
+
+Assumption that users have basic internet access and digital literacy.
+Dependencies on third-party services for security protocols and data analytics tools.
+
+This Software Requirement Specification document outlines the technology stack and requirements for both front-end and back-end components of the Online Grievance
+Redressal Portal, incorporating HTML5, CSS3, JS, BootStrap 5, ReactJS, Java, SpringBoot, Hibernate, JPA, and MySQL. It serves as a guide for the development team and
+will be subject to updates as the project progresses
