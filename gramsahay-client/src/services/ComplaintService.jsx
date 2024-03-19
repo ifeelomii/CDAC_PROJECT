@@ -11,10 +11,10 @@ class ComplaintService {
     return axios.post(baseUrl + "complaints/" + complaint.userid, complaint);
   }
   getComplaintByStatus(status) {
-    return axios.get(baseUrl + "complaints/status/" +status);
+    return axios.get(baseUrl + "complaints/status/" + status);
   }
   getComplaintCount(status) {
-    return axios.get(baseUrl + "count/" +status);
+    return axios.get(baseUrl + "count/" + status);
   }
   addRemarks(complaint) {
     return axios.post(baseUrl + "complaints/", complaint);
@@ -24,6 +24,12 @@ class ComplaintService {
   }
   deleteComplaint(cid) {
     return axios.delete(baseUrl + "complaints/" + cid);
+  }
+  getLatest() {
+    return axios.get(baseUrl + "latest");
+  }
+  editStatus(complaint) {
+    return axios.put(baseUrl+ "complaints/"+complaint.status);
   }
 }
 

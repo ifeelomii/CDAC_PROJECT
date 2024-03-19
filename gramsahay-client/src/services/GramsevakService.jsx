@@ -11,7 +11,7 @@ class GramsevakService {
     return axios.get(baseUrl + "gramsevak/" + username);
   }
   addGramsevak(gramsevak) {
-    return axios.post(baseUrl + "gramsevaks/" + gramsevak.gsid, gramsevak);
+    return axios.post(baseUrl + "gramsevaks/" , gramsevak);
   }
   updateGramsevak(gramsevak) {
     return axios.put(baseUrl + "gramsevaks/" + gramsevak.gsid, gramsevak);

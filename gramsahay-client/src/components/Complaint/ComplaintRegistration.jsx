@@ -7,6 +7,7 @@ const ComplaintRegistration = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [formData, setFormData] = useState({
+    username:"",
     userid: `${params.id}`,
     category: "",
     description: "",
@@ -34,7 +35,19 @@ const ComplaintRegistration = () => {
       ComplaintService.addComplaint(formData);
       setSuccess(true);
       setError("");
-      navigate(`/users/dashboard/${params.username}`);
+      setFormData({
+        username: "",
+        userid: `${params.id}`,
+        category: "",
+        description: "",
+        forGS: "1", //for GS or not
+        forAdmin: "0", //for Admin or not
+        status: "new",
+        state: "Maharashtra",
+        district: "",
+        taluka: "",
+        village: ""
+      });
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);

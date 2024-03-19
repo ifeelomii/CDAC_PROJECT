@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import UserService from "../../services/UserService";
 import ComplaintService from "../../services/ComplaintService";
-import Allcomplaints from "../Complaintspage/Allcomplaints";
 import moment from "moment";
 
 const UserDashboard = () => {
@@ -56,7 +55,10 @@ const UserDashboard = () => {
   };
 
   const handelLogout = () => {
-    window.location.reload(false);
+    // window.location.reload(false);
+    // localStorage.setItem("valid-user", false);
+    localStorage.removeItem("valid-user");
+    navigate(`/login`);
   };
 
   return (
@@ -93,6 +95,17 @@ const UserDashboard = () => {
           >
             {" "}
             Add New Compaint
+          </button>
+        </Link>
+        <Link to={`/feedback`} id="action-comp-btn">
+          <button
+            type="button"
+            name="btn"
+            id="action-comp-btn"
+            className="btn btn-success"
+          >
+            {" "}
+            Add Feedback
           </button>
         </Link>
         <table className="table table-striped">

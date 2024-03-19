@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./Adminreg.css";
-import UserService from "../../../services/UserService";
-import { Navigate, useNavigate } from "react-router-dom";
+import AdminService from "../../../services/AdminService";
+import { useNavigate } from "react-router-dom";
 
 const AdminRegistrationForm = () => {
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    uname: "",
-    pwd: "",
-    fname: "",
-    lname: "",
-    email: "",
-    phone_number: ""
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
+    phoneNumber: ""
   });
 
   const [error, setError] = useState("");
@@ -27,15 +26,30 @@ const AdminRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      UserService.addUser(formData);
-      setSuccess(true);
-      setError("");
-    } catch (error) {
-      setError("Failed to register user. Please try again.");
-      console.error("Error registering user:", error);
+    if (formData.username !== formData.password) {
+      try {
+        AdminService.addAdmin(formData);
+        setSuccess(true);
+        setError("");
+      } catch (error) {
+        setError("Failed to register user. Please try again.");
+        console.error("Error registering user:", error);
+      }
+    } else {
+      setError("Username and Password must be different!");
     }
     console.log(formData);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      username: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      emailId: "",
+      phoneNumber: ""
+    });
   };
 
   const goback = () => {
@@ -65,8 +79,8 @@ const AdminRegistrationForm = () => {
             Username:
             <input
               type="text"
-              name="uname"
-              value={formData.uname}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               placeholder="Select A User Name"
               className="col-md-12"
@@ -77,11 +91,12 @@ const AdminRegistrationForm = () => {
             Password:
             <input
               type="password"
-              name="pwd"
-              value={formData.pwd}
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               placeholder="Enter Password"
               className="col-md-12"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               required
             />
           </label>
@@ -89,8 +104,8 @@ const AdminRegistrationForm = () => {
             First Name:
             <input
               type="text"
-              name="fname"
-              value={formData.first_name}
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               placeholder="Enter Your First Name"
               className="col-md-12"
@@ -101,8 +116,8 @@ const AdminRegistrationForm = () => {
             Last Name:
             <input
               type="text"
-              name="lname"
-              value={formData.last_name}
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               placeholder="Enter Your Last Name"
               className="col-md-12"
@@ -115,11 +130,12 @@ const AdminRegistrationForm = () => {
             Email Address:
             <input
               type="email"
-              name="email"
-              value={formData.email_id}
+              name="emailId"
+              value={formData.emailId}
               onChange={handleChange}
               placeholder="Enter Your Email Id"
               className="col-md-12"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               required
             />
           </label>
@@ -127,12 +143,13 @@ const AdminRegistrationForm = () => {
             Phone Number:
             <input
               type="number"
-              name="phone_number"
-              value={formData.phone_number}
+              name="phoneNumber"
+              value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="Enter Your Number"
               className="col-md-12"
               title="Please enter only numbers"
+              max={10000000000}
               required
             />
           </label>
@@ -143,10 +160,10 @@ const AdminRegistrationForm = () => {
             Register
           </button>
 
-          <button type="reset" id="reset">
+          <button type="reset" id="reset" onClick={resetForm}>
             Reset
           </button>
-        
+
           <button type="button" id="back" onClick={goback}>
             Back
           </button>

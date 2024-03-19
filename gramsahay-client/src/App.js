@@ -32,6 +32,7 @@ import UserDashboard from "./pages/Userpage/UserDashboard";
 import GSDashboard from "./pages/GSpage/GSDashBoard";
 import ShowFeedback from "./pages/Feedbacks/ShowFeedback";
 import { useEffect } from "react";
+// import FeedbackForm from "./components/Feedback/FeedbackForm";
 function App() {
   useEffect(() => {
     localStorage.removeItem("valid-gs");
@@ -85,7 +86,10 @@ function App() {
             path="/complaints/viewcomplaint/:cid"
             element={<ShowComplaint />}
           />
-          <Route path="/complaints/addcomplaint/:id" element={<AddComplaint />} />
+          <Route
+            path="/complaints/addcomplaint/:id"
+            element={<AddComplaint />}
+          />
           <Route path="/complaints/addremark/:cid" element={<AddRemarks />} />
           <Route
             path="/complaints/editcomplaint/:id"
@@ -98,24 +102,20 @@ function App() {
           />
           {/* ADMIN PATHS */}
           <Route path="/login/admin" element={<AdminLogin />} />
-              <Route path="/admins/addadmin" element={<AddAdmin />} />
+          <Route path="/admins/addadmin" element={<AddAdmin />} />
 
-              <Route path="/admins/alladmins" element={<AllAdmins />} />
+          <Route path="/admins/alladmins" element={<AllAdmins />} />
 
-              <Route
-                path="/admins/alladmins/:username"
-                element={<AllAdmins />}
-              />
+          <Route path="/admins/alladmins/:username" element={<AllAdmins />} />
 
-              <Route path="/admins/viewadmin/:aid" element={<ShowAdmin />} />
+          <Route path="/admins/viewadmin/:aid" element={<ShowAdmin />} />
 
-              <Route path="/admins/editadmin/:id" element={<EditAdmin />} />
+          <Route path="/admins/editadmin/:id" element={<EditAdmin />} />
 
-              <Route
-                path="/admins/dashboard/:username"
-                element={<AdminDashboard />}
-              />
-
+          <Route
+            path="/admins/dashboard/:username"
+            element={<AdminDashboard />}
+          />
         </Routes>
       </div>
       <MainFooter />

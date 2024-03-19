@@ -133,7 +133,9 @@ const GSDashboard = () => {
   };
 
   const handelLogout = () => {
-    window.location.reload(false);
+    // window.location.reload(false);
+    localStorage.removeItem("valid-gs");
+    navigate(`/login`);
   };
 
   return (

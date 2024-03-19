@@ -24,19 +24,12 @@ const GSLogin = () => {
         })
         .catch((err) => {
           console.log("error occured", err);
+          setErrorMessage("Invalid login credentials.");
         });
     } catch (error) {
       setErrorMessage("Failed to Login. Please try again.");
       console.error("Error Logging in:", error);
     }
-
-    // if (username === "Omkarware003" && password === "omkar") {
-    //   localStorage.setItem("gsusername", username);
-    //   navigate(`/gramsevaks/dashboard/${localStorage.getItem("gsusername")}`);
-    //   setErrorMessage("");
-    // } else {
-    //   setErrorMessage("Invalid Username or password");
-    // }
   };
 
   const handleChange = (e) => {

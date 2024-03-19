@@ -1,0 +1,12 @@
+User
+1. User should be able to lodge the complaints from his/her login.
+2. User should be able to check the status of the complaints if it is "Resolved" or "Pending or "InProgress".
+
+GramSevak
+1. GS should get a view of the complaints and change it's status to "Resolved", "Pending" or "InProgress".
+2. GS should be able to forward the higher severity level complaints to Admin.
+3. All the complains are listed based on the departments. (e.g. Water, Roads, Electricity).
+4. GS should be able to add comments on the complaints that are visible to admin.
+
+
+

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./FeedbackForm.css";
 import FeedbackService from "../../services/FeedbackService";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate, useHistory } from "react-router-dom";
 const FeedbackForm = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fId: "",
     firstName: "",
@@ -21,21 +21,27 @@ const FeedbackForm = () => {
     setFormData({ ...formData, [name]: value });
     console.log(formData)
   }
+
   const handelSubmit = (e) => {
     e.preventDefault();
     try {
       FeedbackService.addFeedback(formData)
-      setSuccess(true);
-      setError("");
-      setFormData({
-        fId: "",
-        firstName: "",
-        lastName: "",
-        emailId: "",
-        subject: "",
-        yourMessage: ""
-      });
-      navigate("/")
+        .then((result) => {
+          setSuccess(true);
+          setError("");
+          setFormData({
+            fId: "",
+            firstName: "",
+            lastName: "",
+            emailId: "",
+            subject: "",
+            yourMessage: ""
+          });
+        })
+        .catch((err) => {
+          setError("Something went wrong. Please try again.")
+          console.log("error" + err);
+        });
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);
@@ -77,6 +83,7 @@ const FeedbackForm = () => {
                     onChange={handelChange}
                     className="field-divided"
                     placeholder="First"
+                    required
                   />{" "}
                   <input
                     type="text"
@@ -86,6 +93,7 @@ const FeedbackForm = () => {
                     onChange={handelChange}
                     className="field-divided"
                     placeholder="Last"
+                    required
                   />
                 </li>
                 <li>
@@ -99,10 +107,13 @@ const FeedbackForm = () => {
                     value={formData.emailId}
                     onChange={handelChange}
                     className="field-long"
+                    required
                   />
                 </li>
                 <li>
-                  <label>Subject</label>
+                  <label>
+                    Subject <span className="required">*</span>
+                  </label>
                   <input
                     type="text"
                     name="subject"
@@ -110,6 +121,7 @@ const FeedbackForm = () => {
                     value={formData.subject}
                     onChange={handelChange}
                     className="field-select"
+                    required
                   />
                 </li>
                 <li>
@@ -122,6 +134,7 @@ const FeedbackForm = () => {
                     value={formData.yourMessage}
                     onChange={handelChange}
                     className="field-long field-textarea"
+                    required
                   ></textarea>
                 </li>
                 <li>

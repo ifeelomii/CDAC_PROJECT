@@ -50,7 +50,7 @@ const NewComplaints = () => {
           <thead>
             <tr>
               <th scope="col">Complaint Id</th>
-              <th scope="col">User Id</th>
+              {/* <th scope="col">User Id</th> */}
               <th scope="col">Category</th>
               <th scope="col">Description</th>
               <th scope="col">Posted At</th>
@@ -101,7 +101,7 @@ const NewComplaints = () => {
             {complaintlist.map((ob) => (
               <tr key={ob.complaintId}>
                 <td>{ob.complaintId ? ob.complaintId : "null"}</td>
-                <td>{ob.userId ? ob.userId : "null"}</td>
+                {/* <td>{ob.userId ? ob.userId : "null"}</td> */}
                 <td>{ob.category ? ob.category : "null"}</td>
                 <td>{ob.description ? ob.description : "null"}</td>
                 <td>

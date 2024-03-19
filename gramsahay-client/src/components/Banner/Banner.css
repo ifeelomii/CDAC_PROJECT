@@ -96,21 +96,28 @@
 }
 
 @keyframes animate {
-
-    0%,
-    100% {
-        background-image: url('https://source.unsplash.com/1600x1000/?literacy');
+    0%,100% {
+        background-image: url('../../../public/images/savewater.jpg');
+        transition: 3s all ease;
     }
 
-    25% {
-        background-image: url('https://source.unsplash.com/1600x1000/?savewater');
+    20% {
+        background-image: url('../../../public/images/edu1.jpg');
+        transition: 3s all ease;
     }
 
-    50% {
-        background-image: url('https://source.unsplash.com/1600x1000/?study');
+    40% {
+        background-image: url('../../../public/images/vil3.jpg');
+        transition: 3s all ease;
     }
 
-    75% {
-        background-image: url('https://source.unsplash.com/1600x1000/?transportation');
+    60% {
+        background-image: url('../../../public/images/edu2.jpg');
+        transition: 3s all ease;
+    }
+
+    80% {
+        background-image: url('../../../public/images/vil2.jpg');
+        transition: 3s all ease;
     }
 }

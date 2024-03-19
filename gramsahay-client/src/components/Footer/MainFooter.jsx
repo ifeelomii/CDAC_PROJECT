@@ -104,8 +104,6 @@ const MainFooter = () => {
                   <ion-icon name="location-outline"></ion-icon>
                 </span>
                 <Link
-                  to="
-                  https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.992526347066!2d73.83083387465236!3d18.529239868910437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf4a06f8ec33%3A0x8fbd07f290a4163a!2sIET%20C-DAC%20ACTS%20ATC%2C%20Pune!5e0!3m2!1sen!2sin!4v1708171396078!5m2!1sen!2sin"
                   target="_blank"
                   id="mr-lf"
                 >
@@ -128,7 +126,7 @@ const MainFooter = () => {
                 <span>
                   <ion-icon name="mail-outline"></ion-icon>
                 </span>
-                <Link to="mailto:omkarware003" target="_blank" id="mr-lf">
+                <Link to="mailto:omkarware003@gmail.com" target="_blank" id="mr-lf">
                   E-Mail
                 </Link>
               </p>
@@ -139,7 +137,7 @@ const MainFooter = () => {
                   <ion-icon name="logo-linkedin"></ion-icon>
                 </span>
                 <Link
-                  to="https://www.linkedin.com/in/omkar-ware-003abc003/"
+                  to="https://www.linkedin.com/in/gramsahay/"
                   target="_blank"
                   id="mr-lf"
                 >

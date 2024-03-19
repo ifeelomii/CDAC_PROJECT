@@ -11,7 +11,7 @@ class AdminService {
     return axios.get(baseUrl + "admin/" + username);
   }
   addAdmin(admin) {
-    return axios.post(baseUrl + "admins/" + admin.admid, admin);
+    return axios.post(baseUrl + "admins/" , admin);
   }
   updateAdmin(admin) {
     return axios.put(baseUrl + "admins/" + admin.admid, admin);

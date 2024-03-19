@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./Userreg.css";
 import UserService from "../../../services/UserService";
-
+import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert'
 const UserRegistrationForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -34,11 +35,13 @@ const UserRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call API to register user
-      // await axios.post(UserService.addUser(formData));
       UserService.addUser(formData);
       setSuccess(true);
       setError("");
+      setTimeout(() => {
+        swal("Redirecting to login page...")
+        navigate("/login/user")
+      },2000)
     } catch (error) {
       setError("Failed to register user. Please try again.");
       console.error("Error registering user:", error);
@@ -86,6 +89,7 @@ const UserRegistrationForm = () => {
               onChange={handleChange}
               placeholder="Enter Password"
               className="col-md-12"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               required
             />
           </label>
@@ -124,6 +128,7 @@ const UserRegistrationForm = () => {
               onChange={handleChange}
               placeholder="Enter Your Email Id"
               className="col-md-12"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               required
             />
           </label>
@@ -149,6 +154,7 @@ const UserRegistrationForm = () => {
               placeholder="Enter Your Number"
               className="col-md-12"
               title="Please enter only numbers"
+              max={10000000000}
               required
             />
           </label>
@@ -250,7 +256,7 @@ const UserRegistrationForm = () => {
             <input
               type="text"
               name="pincode"
-              value={formData.pin_code}
+              value={formData.pincode}
               onChange={handleChange}
               placeholder="Enter Your Pin  Code"
               className="col-md-12"

@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import Sidepanel from '../Sidepanel/Sidepanel'
+import { Link } from "react-router-dom";
 const Navbar = () => {
   
   return (
@@ -8,12 +9,14 @@ const Navbar = () => {
         className="navbar navbar-expand-lg navbar-light fixed-top"
         style={{ background: "rgb(210,210,210)" }}
       >
+        <Link to='/'>
         <img
           src="/images/gramsahay-logo.png"
           alt="Logo"
           className="nav__logo"
           id="logo"
-        />
+          />
+          </Link>
 
         <ul className="nav__links">
           <li id="li-btn">

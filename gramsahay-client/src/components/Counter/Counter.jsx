@@ -69,22 +69,28 @@ const Counter = () => {
   return (
     <>
       <section className="section section-work-data">
-        <div className="section-container grid grid-three-column">
+        <div className="section-container grid grid-four-column">
           <div>
             <h2 className="counter-numbers" data-number="1000">
-              {comp}+
+              {comp+ip+newc}
+            </h2>
+            <p>Total Complaints</p>
+          </div>
+          <div>
+            <h2 className="counter-numbers" data-number="1000">
+              {comp}
             </h2>
             <p>Completed Complaints</p>
           </div>
           <div>
             <h2 className="counter-numbers" data-number="2000">
-              {ip}+
+              {ip}
             </h2>
             <p>In-Process Complaints</p>
           </div>
           <div>
             <h2 className="counter-numbers" data-number="3000">
-              {newc}+
+              {newc}
             </h2>
             <p>New Complaints</p>
           </div>

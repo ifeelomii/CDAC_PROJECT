@@ -38,11 +38,11 @@ const Sidepanel = () => {
                 Login
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/feedback" className="sidepanel-nav-menu">
                 Feedback
               </Link>
-            </li>
+            </li> */}
           </ul>
           <Footer />
         </div>

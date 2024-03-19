@@ -1,4 +1,4 @@
-import { MainFooter } from "../Footer/MainFooter";
+// import { MainFooter } from "../Footer/MainFooter";
 import "./LoginSection.css";
 const { Link, useNavigate } = require("react-router-dom");
 
@@ -6,10 +6,10 @@ const { Link, useNavigate } = require("react-router-dom");
 const LoginSection = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    console.log("hiiiii");
-    navigate("/login/user");
-  };
+  // const handleClick = () => {
+  //   console.log("hiiiii");
+  //   navigate("/login/user");
+  // };
   return (
     <>
       <div className="main-container">

@@ -11,6 +11,7 @@ import AllGS from "../GSpage/AllGS";
 import AllAdmins from "./AllAdmins";
 import AllFeedbacks from "../Feedbacks/AllFeedbacks";
 import { useNavigate } from "react-router-dom";
+import LatestComplaints from "../Complaintspage/LatestComplaints";
 
 const GSDashboard = () => {
   var newcomp;
@@ -48,6 +49,7 @@ const GSDashboard = () => {
   const [showGS, setShowGS] = useState(false);
   const [showAdmin, setShowAdmins] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showLatest, setShowLatest] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("valid-admin")) {
@@ -56,8 +58,7 @@ const GSDashboard = () => {
       fetchNew();
       fetchInProcess();
       fetchCompleted();
-    }
-    else {
+    } else {
       navigate("/login");
     }
   }, []);
@@ -154,6 +155,7 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
   };
   const toggleShowAllComplaints = () => {
     setShowAllUsers(false);
@@ -164,6 +166,7 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
   };
   const toggleNewComplaints = () => {
     setShowAllUsers(false);
@@ -174,6 +177,8 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
+
     ComplaintService.getComplaintByStatus("new")
       .then((result) => {
         console.log(result.data);
@@ -193,6 +198,8 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
+
     ComplaintService.getComplaintByStatus("inprocess")
       .then((result) => {
         console.log(result.data);
@@ -211,6 +218,7 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
     ComplaintService.getComplaintByStatus("completed")
       .then((result) => {
         console.log(result.data);
@@ -230,6 +238,7 @@ const GSDashboard = () => {
     setShowGS(!showGS);
     setShowAdmins(false);
     setShowFeedback(false);
+    setShowLatest(false);
   };
   const toggleShowAdmin = () => {
     setShowAllUsers(false);
@@ -240,6 +249,7 @@ const GSDashboard = () => {
     setShowGS(false);
     setShowFeedback(false);
     setShowAdmins(!showAdmin);
+    setShowLatest(false);
   };
   const toggleShowFeedback = () => {
     setShowAllUsers(false);
@@ -251,12 +261,28 @@ const GSDashboard = () => {
     setShowFeedback(false);
     setShowAdmins(false);
     setShowFeedback(!showFeedback);
+    setShowLatest(false);
+  };
+
+  const toggleShowLatest = () => {
+    setShowAllUsers(false);
+    setShowAllComplaints(false);
+    setShowNew(false);
+    setShowInProcess(false);
+    setShowCompleted(false);
+    setShowGS(false);
+    setShowFeedback(false);
+    setShowAdmins(false);
+    setShowFeedback(false);
+    setShowLatest(!showLatest);
   };
 
   const handelLogout = () => {
-    window.location.reload(false);
-  }
-  
+    // window.location.reload(false);
+    localStorage.removeItem("valid-admin");
+    navigate(`/login`);
+  };
+
   return (
     <>
       <div id="gs-dashboard-main-container">
@@ -362,6 +388,13 @@ const GSDashboard = () => {
           >
             {showFeedback ? "Hide Feedbacks" : "All Feedbacks"}
           </button>
+          <button
+            onClick={toggleShowLatest}
+            className="btn btn-secondary rounded-pill"
+            id="show"
+          >
+            {showLatest ? "Hide Latest" : "Latest Complaints"}
+          </button>
         </div>
         {showAllUsers && (
           <div>
@@ -409,6 +442,12 @@ const GSDashboard = () => {
           <div>
             <h2>All Feedbacks</h2>
             <AllFeedbacks />
+          </div>
+        )}
+        {showLatest && (
+          <div>
+            <h2>Latest Complaints</h2>
+            <LatestComplaints />
           </div>
         )}
       </div>

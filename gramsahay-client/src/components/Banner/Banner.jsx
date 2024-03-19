@@ -12,7 +12,7 @@ const Banner = () => {
               <p>
                 <span id="span-2">An Online Grievance Redressal Portal</span>
               </p>
-              <Link to="/" className="button">
+              <Link to="/about" className="button">
                 Learn More
               </Link>
             </div>

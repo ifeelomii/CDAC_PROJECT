@@ -1,0 +1,12 @@
+TECH-STACK:- FrontEnd - HTML5, CSS3, JS, BootStrap 5, ReactJS
+	     Backend:-
+			Languages:- Java, 
+	     		Framework - SpringBoot, Hibernate, JPA
+	     Database - MySql
+GramSahay is an a  online grievance redressal platform that provides solution to all your grievances. 
+The user registers a complaint which can be classified into different categories like infrastructure, sanitation, healthcare, education, others, etc.
+The user can access all history of his complaints. This complaints can be seen by the Gramsevak as well as Admin.
+The gramsevak is responsible for resolving this complaints.
+The gramsevak can fetch complaints based on different criterias or filters such as sort by village, sort by complaint status, etc.
+The admin has an overall view of the complaints. Admin can manipulated the complaints, add or remove gramsevak or user.
+GramSahay portal aims to bridge the communication gap between the residents, gramsevak and other higher authorities by providing a unified platform.
